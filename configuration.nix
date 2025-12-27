@@ -107,6 +107,7 @@
     swaynotificationcenter
     wofi
     xfce.xfce4-terminal
+    conky
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
