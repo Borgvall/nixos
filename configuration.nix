@@ -110,6 +110,9 @@
         nnoremap gL <C-w>W
 
         set spell spelllang=de
+
+        " Vertikales Aufteilen für den „diff-Modus“
+        set diffopt=filler,vertical
       '';
     }))
 
