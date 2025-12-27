@@ -90,6 +90,11 @@
     enable = true;
     wrapperFeatures.gtk = true;
   };
+  programs.steam = {
+    enable = true;
+    #remotePlay.openFirewall = true; # Optional: Für Steam Remote Play
+    #dedicatedServer.openFirewall = true; # Optional: Für Source Dedicated Server
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -139,15 +144,17 @@
     xfce.xfce4-terminal
     conky
 
-    steam
     heroic
     bottles
     gamemode
     gamescope
 
-    (texlive.combine {
-      inherit (texlive) scheme-medium koma-script moderncv ucs;
-    })
+    (texlive.withPackages (ps: with ps; [
+      scheme-medium
+      koma-script
+      moderncv
+      ucs
+    ]))
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
