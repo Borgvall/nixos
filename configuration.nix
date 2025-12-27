@@ -10,6 +10,18 @@
       ./hardware-configuration.nix
     ];
 
+  fileSystems."/" = {
+    options = [ "subvol=nixos-root" "compress=zstd" "noatime" ];
+  };
+
+  fileSystems."/nix" = {
+    options = [ "subvol=nixos-nix" "compress=zstd" "noatime" ];
+  };
+
+  fileSystems."/home" = {
+    options = [ "subvol=home" "compress=zstd" "noatime" ];
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
