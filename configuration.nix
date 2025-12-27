@@ -90,6 +90,16 @@
     enable = true;
     wrapperFeatures.gtk = true;
   };
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
+
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
