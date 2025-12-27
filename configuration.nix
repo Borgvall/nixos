@@ -96,7 +96,13 @@
 
   programs.git = {
     enable = true;
+    package = pkgs.gitFull;
     lfs.enable = true;
+    config = {
+      init = {
+        defaultBranch = "main";
+      };
+    };
   };
   programs.vim = {
     enable = true;
@@ -149,7 +155,6 @@
       '';
     }))
 
-    gitFull
     gitg
 
     evolution
