@@ -80,6 +80,8 @@
     ];
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   programs.firefox.enable = true;
   programs.sway = {
     enable = true;
@@ -110,15 +112,23 @@
         set spell spelllang=de
       '';
     }))
+
     gitFull
     gitg
+
     evolution
+
     sway
     swaylock
     swaynotificationcenter
     wofi
     xfce.xfce4-terminal
     conky
+
+    steam
+    heroic
+    bottles
+    gamemode
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
