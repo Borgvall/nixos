@@ -49,6 +49,24 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
+  # 1. Automatische Updates (inkl. Sicherheitsupdates)
+  system.autoUpgrade = {
+    enable = true;
+    dates = "daily";
+    allowReboot = false;
+  };
+
+  # 2. Automatische Bereinigung (Löscht alte Generationen)
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 7d";
+  };
+
+  # 3. Speicherplatz optimieren (Deduplizierung)
+  # Identische Dateien im Store werden nur einmal gespeichert
+  nix.settings.auto-optimise-store = true;
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -179,6 +197,8 @@
 
     heroic
     bottles
+
+    gimp
 
     (texlive.withPackages (ps: with ps; [
       scheme-medium
