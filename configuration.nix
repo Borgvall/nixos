@@ -84,13 +84,21 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-  }
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    vim-full
-    vimPlugins.vim-fugitive
+    ((vim-full.customize {
+      vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
+        start = [ vim-fugitive ];
+      };
+      
+      vimrcConfig.customRC = ''
+        set nocompatible
+        syntax on
+      '';
+    }))
     gitFull
     gitg
     evolution
