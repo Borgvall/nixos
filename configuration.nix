@@ -138,7 +138,6 @@
 
     evolution
 
-    sway
     swaylock
     swaynotificationcenter
     wofi
