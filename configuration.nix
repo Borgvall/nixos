@@ -96,6 +96,8 @@
     #remotePlay.openFirewall = true; # Optional: Für Steam Remote Play
     #dedicatedServer.openFirewall = true; # Optional: Für Source Dedicated Server
   };
+  programs.gamemode.enable = true;
+  programs.gamescope.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -146,8 +148,6 @@
 
     heroic
     bottles
-    gamemode
-    gamescope
 
     (texlive.withPackages (ps: with ps; [
       scheme-medium
