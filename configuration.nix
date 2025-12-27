@@ -85,7 +85,10 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    languagePacks = [ "de" ];
+  };
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
