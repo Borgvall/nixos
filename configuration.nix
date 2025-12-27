@@ -129,6 +129,7 @@
     heroic
     bottles
     gamemode
+    gamescope
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
