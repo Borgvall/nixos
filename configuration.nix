@@ -130,6 +130,10 @@
     bottles
     gamemode
     gamescope
+
+    (texlive.combine {
+      inherit (texlive) scheme-medium koma-script moderncv;
+    })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
