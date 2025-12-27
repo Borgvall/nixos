@@ -50,8 +50,11 @@
   
 
   # Configure keymap in X11
-  services.xserver.xkb.layout = "de";
-  services.xserver.xkb.options = "neo";
+  services.xserver.xkb = {
+    layout = "de,de";
+    variant = "neo,nodeadkeys";
+    options = "grp:sclk_toggle";
+  };
 
   # Konfiguration für die Konsole (TTY)
   # Übernimmt das Layout von oben auch für das Terminal ohne Grafikoberfläche
