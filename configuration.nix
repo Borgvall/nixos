@@ -97,6 +97,17 @@
       vimrcConfig.customRC = ''
         set nocompatible
         syntax on
+        set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+        set backspace=2
+        set expandtab
+        set autoindent
+        set number
+
+        " Switch between windows
+        nnoremap gl <C-w>w
+        nnoremap gL <C-w>W
+
+        set spell spelllang=de
       '';
     }))
     gitFull
