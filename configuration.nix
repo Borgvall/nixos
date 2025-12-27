@@ -42,7 +42,10 @@
 
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm = {
+    enable = true;
+    wayland = true;
+  }
   services.desktopManager.gnome.enable = true;
   
 
@@ -78,6 +81,10 @@
   };
 
   programs.firefox.enable = true;
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  }
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
