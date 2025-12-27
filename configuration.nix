@@ -93,7 +93,10 @@
   environment.systemPackages = with pkgs; [
     ((vim-full.customize {
       vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
-        start = [ vim-fugitive ];
+        start = [
+          vim-fugitive
+          vimtex
+        ];
       };
       
       vimrcConfig.customRC = ''
@@ -105,6 +108,8 @@
         set autoindent
         set number
 
+        filetype plugin indent on
+
         " Switch between windows
         nnoremap gl <C-w>w
         nnoremap gL <C-w>W
@@ -113,6 +118,9 @@
 
         " Vertikales Aufteilen für den „diff-Modus“
         set diffopt=filler,vertical
+
+        " Konfiguration für vimtex
+        let g:vimtex_view_method = 'general'
       '';
     }))
 
@@ -135,7 +143,7 @@
     gamescope
 
     (texlive.combine {
-      inherit (texlive) scheme-medium koma-script moderncv;
+      inherit (texlive) scheme-medium koma-script moderncv ucs;
     })
   ];
 
