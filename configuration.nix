@@ -22,6 +22,8 @@
     options = [ "subvol=home" "compress=zstd" "noatime" ];
   };
 
+  hardware.graphics.enable32Bit = true;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -197,6 +199,8 @@
 
     heroic
     bottles
+    winetricks
+    wineWow64Packages.staging
 
     gimp
 
