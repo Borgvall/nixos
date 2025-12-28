@@ -100,9 +100,17 @@
     enable = true;
     languagePacks = [ "de" ];
   };
+
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+    extraPackages = with pkgs; [
+      swaylock
+      swaynotificationcenter
+      wofi
+      xfce.xfce4-terminal
+      conky
+    ];
   };
 
   programs.git = {
@@ -167,12 +175,6 @@
     gitg
 
     evolution
-
-    swaylock
-    swaynotificationcenter
-    wofi
-    xfce.xfce4-terminal
-    conky
 
     heroic
     bottles
