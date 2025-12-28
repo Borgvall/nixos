@@ -76,6 +76,15 @@
     pulse.enable = true;
   };
 
+  environment.etc."inputrc".text = ''
+    set completion-ignore-case on
+    #
+    # Arrow keys in ANSI mode
+    #
+    "\C-[[A"        history-search-backward
+    "\C-[[B"        history-search-forward
+  '';
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.johannes = {
     isNormalUser = true;
