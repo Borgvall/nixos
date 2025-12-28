@@ -112,6 +112,12 @@
       };
     };
   };
+
+  programs.nix-index = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
   programs.vim = {
     enable = true;
     package = pkgs.vim-full;
