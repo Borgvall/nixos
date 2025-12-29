@@ -4,6 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./gaming.nix
       ./sway.nix
     ];
 
@@ -124,18 +125,6 @@
     defaultEditor = true;
   };
 
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
-    extraCompatPackages = [
-      pkgs.proton-ge-bin
-    ];
-    #remotePlay.openFirewall = true; # Optional: Für Steam Remote Play
-    #dedicatedServer.openFirewall = true; # Optional: Für Source Dedicated Server
-  };
-  programs.gamemode.enable = true;
-  programs.gamescope.enable = true;
-
   environment.systemPackages = with pkgs; [
     ((vim-full.customize {
       vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
@@ -174,11 +163,6 @@
 
     evolution
 
-    heroic
-    bottles
-    winetricks
-    wineWow64Packages.staging
-
     gimp
 
     (texlive.withPackages (ps: with ps; [
@@ -208,4 +192,3 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.11"; # Did you read the comment?
 }
-
