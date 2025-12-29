@@ -15,7 +15,7 @@
 
   environment.systemPackages = with pkgs; [
     heroic
-    bottles
+    (bottles.override { removeWarningPopup = true; })
     winetricks
     wineWow64Packages.staging
   ];
