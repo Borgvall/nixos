@@ -74,7 +74,18 @@
   console.useXkbConfig = true; 
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplipWithPlugin ];
+  };
+
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.hplipWithPlugin ];
+  };
+
+  # Firewall: Port 427 (SLP) wird oft für die HP-Erkennung benötigt
+  networking.firewall.allowedUDPPorts = [ 427 ];
 
   services.pipewire = {
     enable = true;
@@ -124,6 +135,8 @@
 
   environment.systemPackages = with pkgs; [
     gitg
+
+    hplip
 
     evolution
 
