@@ -39,18 +39,8 @@
       #scale 1.2
     }
 
-    # Font for window titles. Will also be used by the bar unless a different font
-    # is used in the bar {} block below. ISO 10646 = Unicode
-    #font -misc-fixed-medium-r-normal--11-120-75-75-C-70-iso10646-1
-    # The font above is very space-efficient, that is, it looks good, sharp and
-    # clear in small sizes. However, if you need a lot of unicode glyphs or
-    # right-to-left text rendering, you should instead use pango for rendering and
-    # chose a FreeType font, such as:
-    #font pango:DejaVu Sans Mono 11
     font pango:Source Code Pro Regular 11
 
-    # default to stacking layout
-    #workspace_layout stacking
     workspace_layout default
 
     # Use Mouse+$mod to drag floating windows to their wanted position
@@ -186,17 +176,12 @@
     bindsym $mod+c mode "resize"
 
     mode "Start Programme" {
-      bindsym c exec celluloid
       bindsym f exec firefox
       bindsym d exec nautilus
       bindsym m exec evolution
       bindsym v exec gvim
-      bindsym e exec emacs
       bindsym p exec seahorse
-      bindsym r exec remmina
       bindsym s exec steam
-      # Win 11 VM
-      bindsym w exec sdl-freerdp /size:1920x1080 +dynamic-resolution -wallpaper -grab-keyboard +mouse-motion -auto-reconnect /u:Joe\ Doe /p:foobar /v:192.168.122.221
 
       # back to normal: Enter or Escape
       bindsym Return mode "default"
@@ -250,16 +235,9 @@
     # Toggle control center
     bindsym $mod+dead_circumflex exec swaync-client -t -sw
 
-    # Automatically assign applications to workspaces
-    assign [class="Steam"] 9
-    assign [instance="amazon games ui.exe"] 8
-    for_window [instance="origin.exe"] 8
-
     # See "window_properties" of `swaymsg -t get_tree`
     for_window [instance="origin.exe"] floating enable
-    for_window [instance="amazon games ui.exe"] floating enable
     for_window [app_id="zoom"] floating enable
     for_window [title="Ubisoft Connect"] floating enable
-    #no_focus [app_id="firefox"]
   '';
 }
