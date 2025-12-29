@@ -21,6 +21,8 @@
     options = [ "subvol=home" "compress=zstd" "noatime" ];
   };
 
+  services.fstrim.enable = true;
+
   hardware.graphics.enable32Bit = true;
 
   boot.loader.systemd-boot.enable = true;
