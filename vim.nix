@@ -21,7 +21,6 @@
         syntax on
         set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
         set backspace=2
-        set expandtab
         set autoindent
         set number
 
