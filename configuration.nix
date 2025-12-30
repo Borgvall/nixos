@@ -139,6 +139,7 @@
     hplip
 
     evolution
+    rhythmbox
 
     gimp
 
