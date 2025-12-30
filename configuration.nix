@@ -55,6 +55,11 @@
     auto-optimise-store = true;
   };
 
+  security.apparmor = {
+    enable = true;
+    packages = [ pkgs.apparmor-profiles ];
+  };
+
   services.xserver.enable = true;
 
 
@@ -134,6 +139,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    apparmor-utils
+
     gitg
 
     hplip
