@@ -95,7 +95,8 @@
   };
 
   # Firewall: Port 427 (SLP) wird oft für die HP-Erkennung benötigt
-  networking.firewall.allowedUDPPorts = [ 427 ];
+  #           Port 161 SNMP status check of HP Printers
+  networking.firewall.allowedUDPPorts = [ 161 427 ];
 
   services.pipewire = {
     enable = true;
