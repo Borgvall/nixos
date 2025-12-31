@@ -55,11 +55,6 @@
     auto-optimise-store = true;
   };
 
-  security.apparmor = {
-    enable = true;
-    packages = [ pkgs.apparmor-profiles ];
-  };
-
   services.xserver.enable = true;
 
   services.displayManager.gdm = {
@@ -148,8 +143,6 @@
   virtualisation.libvirtd.enable = true;
 
   environment.systemPackages = with pkgs; [
-    apparmor-utils
-
     gitg
 
     evolution
