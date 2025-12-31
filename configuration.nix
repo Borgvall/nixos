@@ -108,7 +108,11 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.johannes = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "lp"
+      "scanner"
+    ];
     packages = with pkgs; [
       tree
     ];
