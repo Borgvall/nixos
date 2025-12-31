@@ -103,13 +103,6 @@
     192.168.178.33 HP_OfficeJet_6950
   '';
 
-  # Try to workaround hanging print dialogs
-  environment.sessionVariables = {
-    # WICHTIG: Zwingt GTK-Apps (Firefox, Papers), das 'lpr'-Tool zu nutzen
-    # und umgeht den kaputten CUPS-Direktzugriff, der den Freeze verursacht.
-    GTK_PRINT_BACKENDS = "file,lpr";
-  };
-
   services.pipewire = {
     enable = true;
     pulse.enable = true;
