@@ -98,6 +98,11 @@
   #           Port 161 SNMP status check of HP Printers
   networking.firewall.allowedUDPPorts = [ 161 427 ];
 
+  # Damit Programme nicht auf DNS-Antworten warten müssen:
+  networking.extraHosts = ''
+    192.168.178.33 HP_OfficeJet_6950
+  '';
+
   services.pipewire = {
     enable = true;
     pulse.enable = true;
