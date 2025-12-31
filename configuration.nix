@@ -88,6 +88,12 @@
     extraBackends = [ pkgs.hplipWithPlugin ];
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true; # Erlaubt Auflösung von .local Domains
+    openFirewall = true; # Öffnet UDP 5353 für Avahi
+  };
+
   # Firewall: Port 427 (SLP) wird oft für die HP-Erkennung benötigt
   networking.firewall.allowedUDPPorts = [ 427 ];
 
@@ -145,8 +151,6 @@
     apparmor-utils
 
     gitg
-
-    hplip
 
     evolution
     rhythmbox
