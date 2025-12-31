@@ -115,7 +115,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.johannes = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "libvirtd" "wheel" ];
     packages = with pkgs; [
       tree
     ];
@@ -143,6 +143,9 @@
     enable = true;
     enableBashIntegration = true;
   };
+
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   environment.systemPackages = with pkgs; [
     apparmor-utils

@@ -11,6 +11,7 @@
       xfce.xfce4-terminal
       conky
       source-code-pro
+      polkit_gnome
     ];
   };
   environment.etc."sway/config".text = ''
@@ -226,7 +227,7 @@
     #startup programs at the beginning
     exec evolution
     exec firefox
-    exec /usr/libexec/polkit-gnome-authentication-agent-1
+    exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
     exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
     #exec corectrl
 
