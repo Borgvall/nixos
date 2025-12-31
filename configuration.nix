@@ -152,6 +152,8 @@
     evolution
     rhythmbox
 
+    kdePackages.okular
+
     gimp
 
     (texlive.withPackages (ps: with ps; [
