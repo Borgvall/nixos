@@ -96,6 +96,7 @@
 
   # Firewall: Port 427 (SLP) wird oft für die HP-Erkennung benötigt
   networking.firewall.allowedUDPPorts = [ 427 ];
+  networking.firewall.enable = false;
 
   services.pipewire = {
     enable = true;
