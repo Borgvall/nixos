@@ -150,6 +150,7 @@
 
     kdePackages.okular
 
+    freerdp
     gimp
 
     (texlive.withPackages (ps: with ps; [
