@@ -142,6 +142,9 @@
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
 
+  # Dconf is needed by virt-manager
+  programs.dconf.enable = true;
+
   environment.systemPackages = with pkgs; [
     gitg
 
