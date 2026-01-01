@@ -150,6 +150,8 @@
 
     evolution
     rhythmbox
+    celluloid
+    mpv
 
     kdePackages.okular
 
