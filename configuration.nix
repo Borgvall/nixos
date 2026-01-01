@@ -148,6 +148,10 @@
   environment.systemPackages = with pkgs; [
     gitg
 
+    ghc
+    cabal-install
+    haskell-language-server
+
     evolution
     rhythmbox
     celluloid
