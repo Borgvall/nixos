@@ -36,4 +36,11 @@
     fsType = "btrfs";
     options = [ "compress=zstd" "noatime" "noauto" ];
   };
+
+  # Create mount points for backup filesystems
+  systemd.tmpfiles.rules = [
+    "d /backup-intern 0755 root root -"
+    "d /backup-btrfs 0755 root root -"
+    "d /backup-btrfs-2TB 0755 root root -"
+  ];
 }
