@@ -157,6 +157,8 @@
     celluloid
     mpv
 
+    libreoffice-fresh
+
     kdePackages.okular
 
     freerdp
