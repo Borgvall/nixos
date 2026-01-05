@@ -4,22 +4,11 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./btrfs-filesystems.nix
       ./gaming.nix
       ./sway.nix
       ./vim.nix
     ];
-
-  fileSystems."/" = {
-    options = [ "subvol=nixos-root" "compress=zstd" "noatime" ];
-  };
-
-  fileSystems."/nix" = {
-    options = [ "subvol=nixos-nix" "compress=zstd" "noatime" ];
-  };
-
-  fileSystems."/home" = {
-    options = [ "subvol=home" "compress=zstd" "noatime" ];
-  };
 
   services.fstrim.enable = true;
 
