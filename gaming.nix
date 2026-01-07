@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  boot.kernelModules = [ "ntsync" ];
+  environment.sessionVariables = {
+    PROTON_USE_NTSYNC = "1";
+  };
+
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
