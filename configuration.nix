@@ -146,16 +146,18 @@
     celluloid
     mpv
 
-    libreoffice-fresh
-
     kdePackages.okular
 
     freerdp
     gimp
 
+    libreoffice-fresh
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_US
+    hyphen
+    hyphenDicts.de_DE
+    hyphenDicts.en_US
 
     (texlive.withPackages (ps: with ps; [
       scheme-medium
