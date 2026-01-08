@@ -20,6 +20,7 @@
 
   environment.systemPackages = with pkgs; [
     heroic
+    proton-ge-bin
     (bottles.override { removeWarningPopup = true; })
     mangohud
     winetricks
