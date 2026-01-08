@@ -8,7 +8,7 @@
       swaylock
       swaynotificationcenter
       wofi
-      xfce.xfce4-terminal
+      alacritty
       conky
       source-code-pro
       polkit_gnome
@@ -48,7 +48,7 @@
     floating_modifier $mod
 
     # start a terminal
-    bindsym $mod+Return exec xfce4-terminal
+    bindsym $mod+Return exec alacritty
 
     bindsym $mod+k exec xkill
 
