@@ -153,6 +153,10 @@
     freerdp
     gimp
 
+    hunspell
+    hunspellDicts.de_DE
+    hunspellDicts.en_US
+
     (texlive.withPackages (ps: with ps; [
       scheme-medium
       koma-script
