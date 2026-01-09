@@ -40,6 +40,8 @@
       #scale 1.2
     }
 
+    gaps inner 8
+
     font pango:Source Code Pro Regular 11
 
     workspace_layout default
