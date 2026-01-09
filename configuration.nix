@@ -108,6 +108,10 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  programs.direnv = {
+    enable = true;
+  };
+
   programs.firefox = {
     enable = true;
     languagePacks = [ "de" ];
