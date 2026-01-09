@@ -8,7 +8,7 @@
       ./gaming.nix
       ./sway.nix
       ./vim.nix
-      ./winboat.nix
+      # ./winboat.nix
     ];
 
   services.fstrim.enable = true;
@@ -136,21 +136,12 @@
   programs.dconf.enable = true;
 
   environment.systemPackages = with pkgs; [
-    gitg
-
     ghc
-    cabal-install
-    haskell-language-server
 
     evolution
     rhythmbox
     celluloid
     mpv
-
-    kdePackages.okular
-
-    freerdp
-    gimp
 
     libreoffice-fresh
     hunspell
