@@ -4,6 +4,7 @@
   boot.kernelModules = [ "ntsync" ];
   environment.sessionVariables = {
     PROTON_USE_NTSYNC = "1";
+    WINE_NTSYNC = "1";
   };
 
   programs.steam = {
