@@ -30,9 +30,6 @@
 
         " Vertikales Aufteilen für den „diff-Modus“
         set diffopt=filler,vertical
-
-        " Konfiguration für vimtex
-        let g:vimtex_view_method = 'general'
       '';
     });
   };
