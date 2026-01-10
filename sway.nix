@@ -14,6 +14,10 @@
       polkit_gnome
     ];
   };
+  environment.etc."xdg/alacritty/alacritty.toml".text = ''
+    [window]
+    opacity = 0.9
+  '';
   environment.etc."sway/config".text = ''
     # sway config file (v4)
 
