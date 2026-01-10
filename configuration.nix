@@ -156,13 +156,6 @@
     hyphenDicts.en_US
 
     psmisc
-
-    (texlive.withPackages (ps: with ps; [
-      scheme-medium
-      koma-script
-      moderncv
-      ucs
-    ]))
   ];
 
   # Damit Apps die Wörterbücher auch finden:
