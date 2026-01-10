@@ -3,12 +3,8 @@
 {
   programs.vim = {
     enable = true;
-    package = pkgs.vim-full;
     defaultEditor = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    ((vim-full.customize {
+    package = (pkgs.vim-full.customize {
       vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
         start = [
           vim-fugitive
@@ -38,6 +34,6 @@
         " Konfiguration für vimtex
         let g:vimtex_view_method = 'general'
       '';
-    }))
-  ];
+    });
+  };
 }
