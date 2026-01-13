@@ -19,15 +19,15 @@ in
 lib.mkMerge [
   {
     fileSystems."/" = {
-      options = [ "subvol=nixos-root" ] ++ commonBtrfsOptions;
+      options = commonBtrfsOptions;
     };
 
     fileSystems."/nix" = {
-      options = [ "subvol=nixos-nix" ] ++ commonBtrfsOptions;
+      options = commonBtrfsOptions;
     };
 
     fileSystems."/home" = {
-      options = [ "subvol=home" ] ++ commonBtrfsOptions;
+      options = commonBtrfsOptions;
     };
 
     fileSystems."/btrfs-root" = {
