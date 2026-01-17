@@ -150,6 +150,7 @@
     rhythmbox
     celluloid
     mpv
+    yt-dlp
 
     libreoffice-fresh
     hunspell
