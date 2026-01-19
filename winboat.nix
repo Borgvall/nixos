@@ -1,8 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  virtualisation.docker.enable = true;
-  users.users.johannes.extraGroups = [ "docker" ];
+  virtualisation.podman.enable = true;
   environment.systemPackages = [
     pkgs.winboat
   ];

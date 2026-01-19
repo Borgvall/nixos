@@ -9,7 +9,7 @@
       ./reflex-frp.nix
       ./sway.nix
       ./vim.nix
-      # ./winboat.nix
+      ./winboat.nix
     ];
 
   services.fstrim.enable = true;
