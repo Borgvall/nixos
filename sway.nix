@@ -141,14 +141,6 @@
     bindsym $mod+Shift+9 move container to workspace 9
     bindsym $mod+Shift+0 move container to workspace 10
 
-    # render time settings
-    bindsym $mod+Shift+s max_render_time 4
-    bindsym $mod+Shift+n max_render_time 8
-    bindsym $mod+Shift+r max_render_time off
-    bindsym $mod+Shift+t max_render_time 16
-    bindsym $mod+Shift+d max_render_time 24
-    bindsym $mod+Shift+y max_render_time 31
-
     # reload the configuration file
     bindsym $mod+y reload
     # start sway inplace (preserves your layout/session, can be used to upgrade sway)
