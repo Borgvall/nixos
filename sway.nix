@@ -8,6 +8,7 @@
       swaylock
       swaynotificationcenter
       wofi
+      wofi-emoji
       alacritty
       conky
       source-code-pro
@@ -64,6 +65,9 @@
     # start wofi (a program launcher)
     bindsym $mod+e exec wofi -S run
     bindsym $mod+p exec wofi -S drun
+
+    #start wofi-emoji to enter Unicode-emojis
+    bindsym $mod+colon exec wofi-emoji
 
     # change focus
     bindsym $mod+n focus left
@@ -148,7 +152,7 @@
     # reload the configuration file
     bindsym $mod+y reload
     # start sway inplace (preserves your layout/session, can be used to upgrade sway)
-    bindsym $mod+colon restart
+    bindsym $mod+Shift+y restart
     # exit sway (logs you out of your X session)
     bindsym $mod+x exec "swaynag -t warning -m 'Do you really want to exit sway?' -B 'Logout' 'swaymsg exit' -B 'Suspend' '/home/johannes/bin/sway-suspend.sh' -B 'Poweroff' 'systemctl poweroff' -B 'Reboot' 'systemctl reboot'"
     bindsym $mod+Shift+x exit
