@@ -147,6 +147,7 @@
     ghc
 
     evolution
+    signal-desktop
     rhythmbox
     celluloid
     mpv
