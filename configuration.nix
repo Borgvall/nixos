@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ./btrfs-filesystems.nix
       ./gaming.nix
+      ./haskell-backup.nix
       ./reflex-frp.nix
       ./sway.nix
       ./vim.nix
