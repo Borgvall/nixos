@@ -11,9 +11,22 @@ let
         '';
     };
   };
+  haskell-backup-service-timer = name: let systemd-name = "haskell-${name}"; in {
+    systemd.timers.${systemd-name} = {
+      description = "Run Haskell backup script ${name} daily";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "daily";
+        RandomizedDelaySec = 1200;
+        Persistent = true;
+        Unit = systemd-name;
+      };
+    };
+  };
 in
 lib.mkMerge [
   (haskell-backup-service "backup-intern")
+  (haskell-backup-service-timer "backup-intern")
   (haskell-backup-service "backup")
   (haskell-backup-service "backup-2TB")
 ]
