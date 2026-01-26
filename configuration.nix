@@ -162,7 +162,6 @@
     hyphenDicts.de_DE
     hyphenDicts.en_US
 
-    (alpaca.override { ollama = ollama-vulkan; })
     ollama-vulkan
 
     psmisc
