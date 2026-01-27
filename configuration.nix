@@ -122,6 +122,10 @@
     languagePacks = [ "de" ];
   };
 
+  programs.evolution = {
+    enable = true;
+  };
+
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
@@ -147,7 +151,6 @@
   environment.systemPackages = with pkgs; [
     ghc
 
-    evolution
     signal-desktop
     rhythmbox
     celluloid
