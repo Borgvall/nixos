@@ -9,6 +9,7 @@
         start = [
           vim-fugitive
           vimtex
+          ale
         ];
       };
       
@@ -30,6 +31,12 @@
 
         " Vertikales Aufteilen für den „diff-Modus“
         set diffopt=filler,vertical
+
+        " Ale
+        let g:ale_completion_enabled = 1
+        let g:ale_completion_autoimport = 1
+
+        let g:ale_linters { 'haskell': [ 'hls' ] }
       '';
     });
   };
