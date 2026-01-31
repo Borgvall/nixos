@@ -5,6 +5,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./btrfs-filesystems.nix
+
+      ./borgbackup.nix
       ./gaming.nix
       ./haskell-backup.nix
       ./reflex-frp.nix
