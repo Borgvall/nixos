@@ -36,7 +36,7 @@
         let g:ale_completion_enabled = 1
         let g:ale_completion_autoimport = 1
 
-        let g:ale_linters { 'haskell': [ 'hls' ] }
+        let g:ale_linters = { 'haskell': [ 'hls' ] }
       '';
     });
   };
