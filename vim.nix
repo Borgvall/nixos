@@ -20,6 +20,7 @@
         set backspace=2
         set autoindent
         set number
+        set hlsearch incsearch
 
         filetype plugin indent on
 
