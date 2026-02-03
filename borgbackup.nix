@@ -11,7 +11,8 @@
       passCommand = "cat /run/keys/borgbase_passphrase";
     };
     environment = { BORG_RSH = "ssh -i /run/keys/id_ed25519_borgbase"; };
-    startAt = "daily";
+    startAt = "12:00";
+    persistentTimer = true;
   };
 }
 
