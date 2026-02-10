@@ -7,6 +7,7 @@
       ./btrfs-filesystems.nix
 
       ./borgbackup.nix
+      ./flatpak.nix
       ./gaming.nix
       ./haskell-backup.nix
       ./reflex-frp.nix
