@@ -59,7 +59,7 @@
   services.xserver.enable = true;
 
   services.displayManager.gdm = {
-    enable = true;
+    enable = false;
     wayland = true;
   };
   services.desktopManager.gnome.enable = true;
