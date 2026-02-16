@@ -172,6 +172,7 @@
     hyphenDicts.en_US
 
     ollama-vulkan
+    alpaca
 
     psmisc
   ];
