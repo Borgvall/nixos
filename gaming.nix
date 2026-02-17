@@ -24,5 +24,7 @@
     mangohud
     winetricks
     wineWow64Packages.staging
+
+    ut1999
   ];
 }
