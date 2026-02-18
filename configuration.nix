@@ -135,6 +135,13 @@
     };
   };
 
+  programs.yazi = {
+    enable = true;
+    plugins = {
+      inherit (pkgs.yaziPlugins) jump-to-char;
+    };
+  };
+
   programs.nix-index = {
     enable = true;
     enableBashIntegration = true;
