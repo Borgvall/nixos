@@ -109,9 +109,6 @@
   users.users.johannes = {
     isNormalUser = true;
     extraGroups = [ "libvirtd" "wheel" ];
-    packages = with pkgs; [
-      tree
-    ];
   };
 
   nixpkgs.config.allowUnfree = true;
