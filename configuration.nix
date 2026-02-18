@@ -3,8 +3,6 @@
 {
   imports =
     [
-      ./hosts/johannes-pc/configuration.nix
-
       ./flatpak.nix
       ./gaming.nix
       ./reflex-frp.nix
