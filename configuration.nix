@@ -31,7 +31,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos-johannes";
+  networking.hostName = "johannes-pc";
 
   networking.networkmanager.enable = true;
 
