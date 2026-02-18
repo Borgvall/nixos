@@ -35,6 +35,11 @@
     enable = true;
     dates = "daily";
     allowReboot = false;
+    flags = [
+      "--update-input" "nixpkgs"
+      "--no-write-lock-file"
+      "--print-build-logs"
+    ];
   };
 
   nix.gc = {
