@@ -8,4 +8,6 @@
   ];
 
   networking.hostName = "johannes-pc";
+
+  system.stateVersion = "25.11";
 }
