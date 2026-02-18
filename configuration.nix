@@ -32,6 +32,7 @@
 
   system.autoUpgrade = {
     enable = true;
+    runGarbageCollection = true;
     dates = "daily";
     allowReboot = false;
     flags = [
@@ -42,8 +43,6 @@
   };
 
   nix.gc = {
-    automatic = true;
-    dates = "daily";
     options = "--delete-older-than 7d";
   };
 
