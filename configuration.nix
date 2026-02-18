@@ -160,9 +160,6 @@
     hyphenDicts.de_DE
     hyphenDicts.en_US
 
-    ollama-vulkan
-    alpaca
-
     psmisc
   ];
 

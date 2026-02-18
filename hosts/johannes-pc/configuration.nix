@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -8,6 +8,11 @@
   ];
 
   networking.hostName = "johannes-pc";
+
+  environment.systemPackages = with pkgs; [
+    ollama-vulkan
+    alpaca
+  ];
 
   system.stateVersion = "25.11";
 }
