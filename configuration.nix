@@ -2,9 +2,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./btrfs-filesystems.nix
+    [
+      ./hosts/johannes-pc/configuration.nix
 
       ./borgbackup.nix
       ./flatpak.nix
@@ -30,8 +29,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  networking.hostName = "johannes-pc";
 
   networking.networkmanager.enable = true;
 
