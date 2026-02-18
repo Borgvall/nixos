@@ -5,7 +5,6 @@
     [
       ./hosts/johannes-pc/configuration.nix
 
-      ./borgbackup.nix
       ./flatpak.nix
       ./gaming.nix
       ./haskell-backup.nix
