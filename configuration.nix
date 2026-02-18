@@ -17,7 +17,6 @@
     enable32Bit = true;
   };
 
-  hardware.cpu.amd.updateMicrocode = true;
   services.fwupd.enable = true;
 
   boot.loader.systemd-boot.enable = true;

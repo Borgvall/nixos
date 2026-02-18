@@ -9,6 +9,8 @@
 
   networking.hostName = "johannes-pc";
 
+  hardware.cpu.amd.updateMicrocode = true;
+
   environment.systemPackages = with pkgs; [
     ollama-vulkan
     alpaca
