@@ -4,6 +4,7 @@
   imports = [
       ./hardware-configuration.nix
       ./btrfs-filesystems.nix
+      ./haskell-backup.nix
   ];
 
   networking.hostName = "johannes-pc";

@@ -7,7 +7,6 @@
 
       ./flatpak.nix
       ./gaming.nix
-      ./haskell-backup.nix
       ./reflex-frp.nix
       ./sway.nix
       ./vim.nix
