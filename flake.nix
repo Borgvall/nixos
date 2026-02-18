@@ -6,11 +6,13 @@
   };
 
   outputs = { self, nixpkgs, ... }: {
-    nixosConfigurations.johannes-pc = nixpkgs.lib.nixosSystem {
-      modules = [
-        ./hosts/johannes-pc/configuration.nix
-        ./configuration.nix
-      ];
+    nixosConfigurations = {
+      johannes-pc = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/johannes-pc/configuration.nix
+          ./configuration.nix
+        ];
+      };
     };
   };
 }
