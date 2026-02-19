@@ -23,7 +23,7 @@
     (bottles.override { removeWarningPopup = true; })
     mangohud
     winetricks
-    wineWow64Packages.staging
+    wine-staging
 
     ut1999
   ];
