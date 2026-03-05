@@ -156,8 +156,8 @@
     enableBashIntegration = true;
   };
 
-  programs.virt-manager.enable = true;
-  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = false;
+  virtualisation.libvirtd.enable = false;
 
   # Dconf is needed by virt-manager
   programs.dconf.enable = true;
