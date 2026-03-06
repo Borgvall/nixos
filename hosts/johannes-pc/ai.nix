@@ -3,7 +3,7 @@
 {
   services.ollama = {
     enable = true;
-    package = pkgs.ollama-rocm;
+    package = pkgs.ollama-vulkan;
   };
 
   environment.systemPackages = with pkgs; [
