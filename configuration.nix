@@ -3,6 +3,7 @@
 {
   imports =
     [
+      ./compressingswap.nix
       ./flatpak.nix
       ./gaming.nix
       ./reflex-frp.nix
