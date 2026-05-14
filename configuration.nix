@@ -110,6 +110,10 @@
     extraGroups = [ "libvirtd" "wheel" ];
   };
 
+  users.users.test = {
+    isNormalUser = true;
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   programs.direnv = {
