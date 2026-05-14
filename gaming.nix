@@ -20,12 +20,21 @@
   systemd.user.tmpfiles =  {
     enable = true; # Let this fail, if someone changes the default.
     rules = let 
-      compatdir = "%h/.steam/root/compatibilitytools.d";
+      steaminstalldir = "%h/.local/share/Steam";
+      compatdir = "${steaminstalldir}/compatibilitytools.d";
       link = "${compatdir}/Proton-GE";
       target = pkgs.proton-ge-bin.steamcompattool.outPath;
+      steamdir = "%h/.steam";
     in [
       "d ${compatdir} - - - - -"
       "L+ ${link} - - - - ${target}"
+
+      # When Steam gets started for the first time, it creates a directory with
+      # symlinks to the install directory (among other things). Third party
+      # tools are using these to find Proton versions.
+      "d ${steamdir} - - - - -"
+      "L ${steamdir}/root - - - - ${steaminstalldir}"
+      "L ${steamdir}/steam - - - - ${steaminstalldir}"
     ];
   };
 
