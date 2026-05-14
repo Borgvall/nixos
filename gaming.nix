@@ -2,9 +2,6 @@
 
 {
   boot.kernelModules = [ "ntsync" ];
-  environment.sessionVariables = {
-    PROTON_USE_NTSYNC = "1";
-  };
 
   programs.steam = {
     enable = true;
