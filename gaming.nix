@@ -16,17 +16,20 @@
     #dedicatedServer.openFirewall = true; # Optional: Für Source Dedicated Server
   };
 
-  system.userActivationScripts.linkProtonGE = {
-    text = ''
-      TARGET="${pkgs.proton-ge-bin.steamcompattool.outPath}"
-      LINK="$HOME/.steam/root/compatibilitytools.d/Proton-GE"
-      
-      # Create the link only, if it's not correct already.
-      if [ ! -L "$LINK" ] || [ "$(readlink -e "$LINK")" != "$TARGET" ]; then
-        mkdir -p "$(dirname "$LINK")"
-        ln -Tfs "$TARGET" "$LINK"
-      fi
-    '';
+  # Link the Proton-GE nix store path to the user directory.
+  # This is needed for using nixpkgs' proton-ge-bin with Heroic and others.
+  #
+  # Discussion: https://discourse.nixos.org/t/using-proton-ge-bin-package-outside-of-steam/77598/2
+  systemd.user.tmpfiles =  {
+    enable = true; # Let this fail, if someone changes the default.
+    rules = let 
+      compatdir = "%h/.steam/root/compatibilitytools.d";
+      link = "${compatdir}/Proton-GE";
+      target = pkgs.proton-ge-bin.steamcompattool.outPath;
+    in [
+      "d ${compatdir} - - - - -"
+      "L+ ${link} - - - - ${target}"
+    ];
   };
 
   programs.gamemode.enable = true;
