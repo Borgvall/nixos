@@ -104,14 +104,15 @@
     "\C-[[B"        history-search-forward
   '';
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.johannes = {
     isNormalUser = true;
     extraGroups = [ "libvirtd" "wheel" ];
+    uid = 1000;
   };
 
   users.users.test = {
     isNormalUser = true;
+    uid = 1001;
   };
 
   nixpkgs.config.allowUnfree = true;
