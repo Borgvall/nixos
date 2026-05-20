@@ -47,6 +47,7 @@
     winetricks
     wineWow64Packages.staging
 
+    supertuxkart
     ut1999
   ];
 }
