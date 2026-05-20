@@ -43,6 +43,7 @@
 
   environment.systemPackages = with pkgs; [
     heroic
+    (bottles.override { removeWarningPopup = true; })
     mangohud
     winetricks
     wineWow64Packages.staging
