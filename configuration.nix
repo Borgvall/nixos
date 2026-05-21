@@ -171,7 +171,9 @@
   environment.systemPackages = with pkgs; [
     ghc
 
+    discord
     signal-desktop
+
     rhythmbox
     celluloid
     mpv
