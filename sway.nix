@@ -16,6 +16,9 @@
       polkit_gnome
     ];
   };
+
+  xdg.portal.wlr.enable = true;
+
   environment.etc."xdg/alacritty/alacritty.toml".text = ''
     [window]
     opacity = 0.9
