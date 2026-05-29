@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-fork, ... }:
 
 {
   boot.kernelModules = [ "ntsync" ];
@@ -48,18 +48,9 @@
     wineWow64Packages.staging
 
     supertuxkart
-    ut1999
+    pkgs-fork.ut1999
   ];
 
   # Keep the Unreal Tournament ISOs in the Nix-store to avoid redownloading them.
-  system.extraDependencies = [
-    (pkgs.fetchurl {
-      url = "https://archive.org/download/ut-goty/UT_GOTY_CD1.iso";
-      hash = "sha256-4YSYTKiPABxd3VIDXXbNZOJm4mx0l1Fhte1yNmx0cE8=";
-    })
-    (pkgs.fetchurl {
-      url = "https://archive.org/download/ut-goty/UT_GOTY_CD2.iso";
-      hash = "sha256-2V2O4c+VVi7gI/1UA17IgT1CdfY9GEdCMiCYbtyNANg=";
-    })
-  ];
+  system.extraDependencies = pkgs-fork.ut1999.isos;
 }
