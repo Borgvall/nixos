@@ -3,14 +3,25 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    my-nixpkgs.url = "github:Borgvall/nixpkgs/ut1999-expose-isos";
   };
 
-  outputs = { self, nixpkgs, ... }: {
+  outputs = { self, nixpkgs, my-nixpkgs, ... }: let
+    pkgs-fork = import my-nixpkgs {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
+  in {
     nixosConfigurations = {
       johannes-pc = nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/johannes-pc/configuration.nix
           ./configuration.nix
+
+          {
+            _module.args.pkgs-fork = pkgs-fork;
+          }
         ];
       };
     };
