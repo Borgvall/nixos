@@ -19,10 +19,26 @@
 
   xdg.portal.wlr.enable = true;
 
+  environment.etc."conky/conky-sway.conf".text = ''
+    conky.config = {
+      out_to_console = true,
+      out_to_x = false,
+    }
+
+    conky.text = [[
+    RAM ''${mem} | \
+    CPU ''${cpubar} | \
+    WLAN ''${downspeed wlo1} down ''${upspeed wlo1} up | \
+    NET ''${downspeed enp34s0} down ''${upspeed enp34s0} up | \
+    ''${time %a %d %b %R}
+    ]]
+  '';
+
   environment.etc."xdg/alacritty/alacritty.toml".text = ''
     [window]
     opacity = 0.9
   '';
+
   environment.etc."sway/config".text = ''
     # sway config file (v4)
 
@@ -227,7 +243,7 @@
     # Start i3bar to display a workspace bar (plus the system information i3status
     # finds out, if available)
     bar {
-      status_command conky
+      status_command conky --config=/etc/conky/conky-sway.conf
       #mode hide
       modifier $mod
       position top
