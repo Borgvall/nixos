@@ -14,7 +14,7 @@
     };
     module-args = {
       _module.args = {
-        pkgs-fork = pkgs-fork;
+        inherit pkgs-fork;
       };
     };
   in {
