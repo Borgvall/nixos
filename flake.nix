@@ -12,6 +12,11 @@
       system = "x86_64-linux";
       config.allowUnfree = true;
     };
+    module-args = {
+      _module.args = {
+        pkgs-fork = pkgs-fork;
+      };
+    };
   in {
     nixosConfigurations = {
       johannes-pc = nixpkgs.lib.nixosSystem {
@@ -19,9 +24,7 @@
           ./hosts/johannes-pc/configuration.nix
           ./configuration.nix
 
-          {
-            _module.args.pkgs-fork = pkgs-fork;
-          }
+          module-args
         ];
       };
     };
