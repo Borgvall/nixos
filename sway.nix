@@ -51,7 +51,7 @@
     }
 
     output * {
-      background ~/Bilder/ElaundJohannes.png fit #c9ecee
+      background #c9ecee solid_color
       dpms on
     }
 
