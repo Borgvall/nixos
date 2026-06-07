@@ -19,18 +19,28 @@
 
   xdg.portal.wlr.enable = true;
 
-  environment.etc."conky/conky-sway.conf".text = ''
+  environment.etc."conky/conky-sway.conf".text = let
+    inherit (config.hostSpecifics.interfaceNames) wlan eth;
+    ifaceSpeed = desc: iface:
+      if (null == iface)
+      then ""
+      else "${desc} \${downspeed ${iface}} down \${upspeed ${iface}} up";
+    conkies = [
+      "RAM \${mem}"
+      "CPU \${cpubar}"
+      (ifaceSpeed "WLAN" wlan)
+      (ifaceSpeed "NET" eth)
+      "\${time %a %d %b %R}"
+    ];
+    conkieText = lib.strings.concatStringsSep " | " (lib.remove "" conkies);
+  in ''
     conky.config = {
       out_to_console = true,
       out_to_x = false,
     }
 
     conky.text = [[
-    RAM ''${mem} | \
-    CPU ''${cpubar} | \
-    WLAN ''${downspeed wlo1} down ''${upspeed wlo1} up | \
-    NET ''${downspeed enp34s0} down ''${upspeed enp34s0} up | \
-    ''${time %a %d %b %R}
+      ${conkieText}
     ]]
   '';
 
