@@ -13,4 +13,9 @@
   hardware.cpu.amd.updateMicrocode = true;
 
   system.stateVersion = "25.11";
+
+  hostSpecifics.interfaceNames = {
+    wlan = "wlo1";
+    eth = "enp34s0";
+  };
 }
