@@ -6,6 +6,7 @@
       ./compressingswap.nix
       ./flatpak.nix
       ./gaming.nix
+      ./gnome-remote-desktop.nix
       ./host-specific-options.nix
       ./reflex-frp.nix
       ./sway.nix
