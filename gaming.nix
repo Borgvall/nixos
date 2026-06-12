@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-fork, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   boot.kernelModules = [ "ntsync" ];
@@ -48,9 +48,9 @@
     wineWow64Packages.staging
 
     supertuxkart
-    pkgs-fork.ut1999
+    ut1999
   ];
 
   # Keep the Unreal Tournament ISOs in the Nix-store to avoid redownloading them.
-  system.extraDependencies = pkgs-fork.ut1999.isos;
+  system.extraDependencies = pkgs.ut1999.isos;
 }
