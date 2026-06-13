@@ -4,7 +4,6 @@
   imports =
     [
       ./compressingswap.nix
-      ./dankmaterialshell.nix
       ./flatpak.nix
       ./gaming.nix
       ./host-specific-options.nix
