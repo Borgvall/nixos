@@ -60,6 +60,8 @@
   };
   services.desktopManager.gnome.enable = true;
   
+  # Hint Electron Apps to use Wayland
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   services.xserver.xkb = {
     layout = "de,de";
