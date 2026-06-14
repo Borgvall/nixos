@@ -59,7 +59,6 @@
     enable = true;
   };
   services.desktopManager.gnome.enable = true;
-  services.desktopManager.lomiri.enable = true;
   
 
   services.xserver.xkb = {
