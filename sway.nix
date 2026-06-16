@@ -235,8 +235,10 @@
       bindsym p output * mode 3840x2160@50Hz
       bindsym n output * mode 3840x2160@60Hz
 
-      bindsym v output * adaptive_sync toggle
-      bindsym h output * hdr toggle
+      bindsym v output * adaptive_sync off
+      bindsym Shift+v output * adaptive_sync on
+      bindsym h output * hdr off
+      bindsym Shift+h output * hdr on
 
       # Wechsel zwischen NEO und Nodeadkeys
       bindsym e input * xkb_switch_layout 1
