@@ -13,8 +13,8 @@
     #dedicatedServer.openFirewall = true; # Optional: Für Source Dedicated Server
   };
 
-  # Link the Proton-GE nix store path to the user directory.
-  # This is needed for using nixpkgs' proton-ge-bin with Heroic and others.
+  # Link the Proton nix store paths to the user directory.
+  # This is needed for using nixpkgs' protons with Heroic and others.
   #
   # Discussion: https://discourse.nixos.org/t/using-proton-ge-bin-package-outside-of-steam/77598/2
   systemd.user.tmpfiles =  {
@@ -22,12 +22,9 @@
     rules = let 
       steaminstalldir = "%h/.local/share/Steam";
       compatdir = "${steaminstalldir}/compatibilitytools.d";
-      link = "${compatdir}/Proton-GE";
-      target = pkgs.proton-ge-bin.steamcompattool.outPath;
       steamdir = "%h/.steam";
     in [
       "d ${compatdir} - - - - -"
-      "L+ ${link} - - - - ${target}"
 
       # When Steam gets started for the first time, it creates a directory with
       # symlinks to the install directory (among other things). Third party
@@ -35,7 +32,12 @@
       "d ${steamdir} - - - - -"
       "L ${steamdir}/root - - - - ${steaminstalldir}"
       "L ${steamdir}/steam - - - - ${steaminstalldir}"
-    ];
+    ] ++ 
+    map (proton: let
+          link = "${compatdir}/${proton.pname}";
+          target = proton.steamcompattool.outPath;
+        in "L+ ${link} - - - - ${target}"
+        ) config.programs.steam.extraCompatPackages;
   };
 
   programs.gamemode.enable = true;
