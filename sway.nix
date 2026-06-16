@@ -269,7 +269,7 @@
     exec evolution
     exec firefox
     exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
-    exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+    exec dbus-update-activation-environment --systemd --all
     #exec corectrl
 
     # Sway notification center
