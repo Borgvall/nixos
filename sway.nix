@@ -232,8 +232,8 @@
       bindsym m exec pactl set-card-profile alsa_card.pci-0000_28_00.1 output:hdmi-surround
       
       # Wechsel zwischen PAL und NTSC
-      bindsym p output * mode 1920x1080@50Hz
-      bindsym n output * mode 1920x1080@60Hz
+      bindsym p output * mode 3840x2160@50Hz
+      bindsym n output * mode 3840x2160@60Hz
 
       bindsym v output * adaptive_sync toggle
       bindsym h output * hdr toggle
