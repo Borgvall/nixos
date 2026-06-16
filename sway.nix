@@ -19,6 +19,9 @@
 
   xdg.portal.wlr.enable = true;
 
+  # Enable Vulkan-renderer, allows one to enable HDR
+  environment.sessionVariables.WLR_RENDERER = "vulkan";
+
   environment.etc."conky/conky-sway.conf".text = let
     inherit (config.hostSpecifics.interfaceNames) wlan eth;
     ifaceSpeed = desc: iface:
