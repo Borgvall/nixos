@@ -26,7 +26,7 @@
     inherit (config.hostSpecifics.interfaceNames) wlan eth;
     ifaceSpeed = desc: iface:
       if (null == iface)
-      then ""
+      then null
       else "${desc} \${downspeed ${iface}} down \${upspeed ${iface}} up";
     conkies = [
       "RAM \${mem}"
@@ -35,7 +35,7 @@
       (ifaceSpeed "NET" eth)
       "\${time %a %d %b %R}"
     ];
-    conkieText = lib.strings.concatStringsSep " | " (lib.remove "" conkies);
+    conkieText = lib.strings.concatStringsSep " | " (lib.remove null conkies);
   in ''
     conky.config = {
       out_to_console = true,
