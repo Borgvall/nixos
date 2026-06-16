@@ -178,6 +178,7 @@
 
     rhythmbox
     celluloid
+    geeqie
     mpv
     yt-dlp
 
