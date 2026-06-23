@@ -7,7 +7,6 @@
       ./flatpak.nix
       ./gaming.nix
       ./host-specific-options.nix
-      ./reflex-frp.nix
       ./sway.nix
       ./vim.nix
     ];
