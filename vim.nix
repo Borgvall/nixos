@@ -45,6 +45,15 @@
                 \ })
         endif
 
+        " Nix Language Server (nixd) Registrierung aktivieren
+        if executable('nixd')
+            au User lsp_setup call lsp#register_server({
+                \ 'name': 'nixd',
+                \ 'cmd': {server_info->['nixd']},
+                \ 'whitelist': ['nix'],
+                \ })
+        endif
+
         " Nützliche Tastenkombinationen für die Entwicklung
         function! s:on_lsp_buffer_enabled() abort
             setlocal omnifunc=lsp#complete
@@ -61,4 +70,8 @@
       '';
     });
   };
+
+  environment.systemPackages = with pkgs; [
+    nixd
+  ];
 }
