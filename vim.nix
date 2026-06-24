@@ -9,7 +9,9 @@
         start = [
           vim-fugitive
           vimtex
-          ale
+          vim-lsp
+          asyncomplete-vim
+          asyncomplete-lsp-vim
         ];
       };
       
@@ -33,11 +35,29 @@
         " Vertikales Aufteilen für den „diff-Modus“
         set diffopt=filler,vertical
 
-        " Ale
-        let g:ale_completion_enabled = 1
-        let g:ale_completion_autoimport = 1
+        
+        " HLS Registrierung aktivieren, sobald wir eine Haskell-Datei öffnen
+        if executable('haskell-language-server-wrapper')
+            au User lsp_setup call lsp#register_server({
+                \ 'name': 'haskell-language-server',
+                \ 'cmd': {server_info->['haskell-language-server-wrapper', '--lsp']},
+                \ 'whitelist': ['haskell'],
+                \ })
+        endif
 
-        let g:ale_linters = { 'haskell': [ 'hls' ] }
+        " Nützliche Tastenkombinationen für die Entwicklung
+        function! s:on_lsp_buffer_enabled() abort
+            setlocal omnifunc=lsp#complete
+            nmap <buffer> gd <plug>(lsp-definition)
+            nmap <buffer> gr <plug>(lsp-references)
+            nmap <buffer> <leader>rn <plug>(lsp-rename)
+            nmap <buffer> K <plug>(lsp-hover)
+        endfunction
+
+        augroup LspHaskell
+            autocmd!
+            autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+        augroup END
       '';
     });
   };
