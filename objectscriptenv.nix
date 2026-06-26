@@ -1,9 +1,9 @@
 {pkgs, ...}:
 
 let 
-  containerUid = 64312;
   containerUser = "iris-development";
   containerUserHome = "/var/home/${containerUser}";
+  containerUid = 64312;
   irisDataDir = "${containerUserHome}/iris-data";
 in {
   programs.vscode = {
@@ -36,7 +36,7 @@ in {
       ];
       extraOptions = [ "--userns=keep-id" ];
       volumes = [
-        "${irisDataDir}:/ISC"
+        "${irisDataDir}:/usr/irissys/mgr"
       ];
     };
   };
