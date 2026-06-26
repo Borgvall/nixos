@@ -47,6 +47,9 @@ in {
     createHome = true;
     home = containerUserHome;
     linger = true;
+    
+    # Ermöglicht Rootless Podman das Mapping von UIDs innerhalb des Containers
+    autoSubUidGidRange = true;
   };
   users.groups."${containerUser}" = {
     gid = containerUid;
