@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "my-nixpkgs": {
-      "locked": {
-        "lastModified": 1780062508,
-        "narHash": "sha256-X5eKiPQsaNOettRIxNh3/TtCg6yYHEWC3YpFB8yD5uk=",
-        "owner": "Borgvall",
-        "repo": "nixpkgs",
-        "rev": "e3e2d9323a235b50fcd7b5f445923c00568f2144",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Borgvall",
-        "ref": "ut1999-expose-isos",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1782467914,
@@ -34,7 +18,6 @@
     },
     "root": {
       "inputs": {
-        "my-nixpkgs": "my-nixpkgs",
         "nixpkgs": "nixpkgs"
       }
     }
