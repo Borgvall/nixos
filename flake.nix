@@ -7,7 +7,7 @@
     my-nixpkgs.url = "github:Borgvall/nixpkgs/ut1999-expose-isos";
   };
 
-  outputs = { self, nixpkgs, my-nixpkgs, ... }: let
+  outputs = { nixpkgs, my-nixpkgs, ... }: let
     pkgs-fork = import my-nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;

@@ -1,5 +1,4 @@
-{ lib
-, vscode-utils
+{ vscode-utils
 , autoPatchelfHook
 , stdenv
 }:

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   haskell-backup-service = name: {
     systemd.services."haskell-${name}" = {
