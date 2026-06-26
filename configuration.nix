@@ -7,6 +7,7 @@
       ./flatpak.nix
       ./gaming.nix
       ./host-specific-options.nix
+      ./objectscriptenv.nix
       ./sway.nix
       ./vim.nix
     ];
