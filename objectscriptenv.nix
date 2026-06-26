@@ -5,6 +5,7 @@
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       vscodevim.vim
+      (pkgs.callPackage ./pkgs/vscode-objectscript.nix { })
     ];
   };
 
