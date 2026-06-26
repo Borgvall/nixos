@@ -4,6 +4,7 @@ let
   containerUser = "iris-development";
   containerUserHome = "/var/home/${containerUser}";
   containerUid = 64312;
+  irisDataDir = "${containerUserHome}/iris-data";
 in {
   programs.vscode = {
     enable = true;
@@ -35,10 +36,14 @@ in {
       ];
       extraOptions = [ "--userns=keep-id" ];
       volumes = [
-        "${containerUserHome}/iris-data:/usr/irissys/mgr"
+        "${irisDataDir}:/usr/irissys/mgr"
       ];
     };
   };
+
+  systemd.tmpfiles.rules = [
+    "d ${irisDataDir} 0700 ${containerUser} ${containerUser} -"
+  ];
 
   users.users."${containerUser}" = {
     isSystemUser = true;
