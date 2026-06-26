@@ -23,6 +23,7 @@
         modules = [
           ./hosts/johannes-pc/configuration.nix
           ./configuration.nix
+          ./gaming.nix
 
           module-args
         ];
