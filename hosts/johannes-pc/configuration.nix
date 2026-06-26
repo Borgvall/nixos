@@ -5,7 +5,6 @@
       ./hardware-configuration.nix
       ./btrfs-filesystems.nix
       ./haskell-backup.nix
-      ./ai.nix
   ];
 
   networking.hostName = "johannes-pc";
