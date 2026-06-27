@@ -3,7 +3,7 @@
 let 
   containerUser = "iris-development";
   containerUserHome = "/var/home/${containerUser}";
-  containerUid = 64312;
+  containerUid = 51773;  # DO NOT CHANGE THIS
   irisDataDir = "${containerUserHome}/iris-data";
   iscDataDirectory = "/ISC";
 in {
