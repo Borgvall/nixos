@@ -3,6 +3,7 @@
 let 
   containerUser = "iris-development";
   containerUserHome = "/var/home/${containerUser}";
+  containerName = containerUser;
   irisDataDir = "${containerUserHome}/iris-data";
   containerUid = 51773;  # DO NOT CHANGE THIS
   durableMountDir = "/dur";
@@ -24,7 +25,7 @@ in {
   };
 
   environment.shellAliases = let 
-    run-in-container = command: "sudo -u ${containerUser} HOME=${containerUserHome} sh -c 'cd ${containerUserHome} && podman exec -it iris-development ${command}'";
+    run-in-container = command: "sudo -u ${containerUser} HOME=${containerUserHome} sh -c 'cd ${containerUserHome} && podman exec -it ${containerName} ${command}'";
   in {
     iris-bash = run-in-container "/bin/bash";
     iris-term = run-in-container "iris session IRIS";
@@ -32,12 +33,12 @@ in {
 
   virtualisation.oci-containers = {
     backend = "podman";
-    containers.iris-development = {
+    containers."${containerName}" = {
       autoStart = false;
       podman = {
         user = containerUser;
       };
-      hostname = "iris-development";
+      hostname = containerName;
       image = "intersystems/iris-community:latest-em";
       ports = [
         "127.0.0.1:52773:52773"
