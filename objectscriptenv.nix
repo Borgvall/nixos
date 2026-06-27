@@ -3,9 +3,10 @@
 let 
   containerUser = "iris-development";
   containerUserHome = "/var/home/${containerUser}";
-  containerUid = 51773;  # DO NOT CHANGE THIS
   irisDataDir = "${containerUserHome}/iris-data";
-  iscDataDirectory = "/isc-data-directory";
+  containerUid = 51773;  # DO NOT CHANGE THIS
+  durableMountDir = "/dur";
+  iscDataDirectory = "${durableMountDir}/iconfig";
 in {
   programs.vscode = {
     enable = true;
@@ -37,7 +38,7 @@ in {
       ];
       extraOptions = [ "--userns=keep-id" ];
       volumes = [
-        "${irisDataDir}:${iscDataDirectory}"
+        "${irisDataDir}:${durableMountDir}"
       ];
       environment = {
         ISC_DATA_DIRECTORY = iscDataDirectory;
