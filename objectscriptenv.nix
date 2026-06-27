@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, lib, ...}:
 
 let 
   containerUser = "iris-development";
@@ -11,11 +11,10 @@ let
 in {
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      vscodevim.vim
-      (pkgs.callPackage ./pkgs/vscode-intersystems-objectscript.nix { })
-      (pkgs.callPackage ./pkgs/vscode-intersystems-servermanager.nix { })
-      (pkgs.callPackage ./pkgs/vscode-intersystems-language-server.nix { })
+    extensions = lib.map (pkgPath: pkgs.callPackage pkgPath { }) [
+      ./pkgs/vscode-intersystems-objectscript.nix
+      ./pkgs/vscode-intersystems-servermanager.nix
+      ./pkgs/vscode-intersystems-language-server.nix
     ];
   };
 
