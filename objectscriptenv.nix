@@ -5,6 +5,7 @@ let
   containerUserHome = "/var/home/${containerUser}";
   containerUid = 64312;
   irisDataDir = "${containerUserHome}/iris-data";
+  iscDataDirectory = "/ISC";
 in {
   programs.vscode = {
     enable = true;
@@ -36,8 +37,11 @@ in {
       ];
       extraOptions = [ "--userns=keep-id" ];
       volumes = [
-        "${irisDataDir}:/usr/irissys/mgr"
+        "${irisDataDir}:${iscDataDirectory}"
       ];
+      environment = {
+        ISC_DATA_DIRECTORY = iscDataDirectory;
+      };
     };
   };
 
