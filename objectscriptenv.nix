@@ -29,6 +29,8 @@ in {
   in {
     iris-bash = run-in-container "/bin/bash";
     iris-term = run-in-container "iris session IRIS";
+
+    iris-web = "xdg-open http://127.0.0.1:52773/csp/sys/UtilHome.csp";
   };
 
   virtualisation.oci-containers = {
