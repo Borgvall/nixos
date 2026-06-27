@@ -23,6 +23,13 @@ in {
     dockerCompat = true;
   };
 
+  environment.shellAliases = let 
+    run-in-container = command: "sudo -u ${containerUser} HOME=${containerUserHome} sh -c 'cd ${containerUserHome} && podman exec -it iris-development ${command}'";
+  in {
+    iris-bash = run-in-container "/bin/bash";
+    iris-term = run-in-container "iris session IRIS";
+  };
+
   virtualisation.oci-containers = {
     backend = "podman";
     containers.iris-development = {
