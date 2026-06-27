@@ -189,6 +189,8 @@
     hyphenDicts.de_DE
     hyphenDicts.en_US
 
+    file
+    net-tools
     psmisc
   ];
 
