@@ -24,10 +24,10 @@ in {
   };
 
   environment.shellAliases = let 
-    run-in-container = command: "sudo -u ${containerUser} HOME=${containerUserHome} sh -c 'cd ${containerUserHome} && podman exec -it ${containerName} ${command}'";
+    runInContainer = command: "sudo -u ${containerUser} HOME=${containerUserHome} sh -c 'cd ${containerUserHome} && podman exec -it ${containerName} ${command}'";
   in {
-    iris-bash = run-in-container "/bin/bash";
-    iris-term = run-in-container "iris session IRIS";
+    iris-bash = runInContainer "/bin/bash";
+    iris-term = runInContainer "iris session IRIS";
 
     iris-web = "xdg-open http://127.0.0.1:52773/csp/sys/UtilHome.csp";
   };
