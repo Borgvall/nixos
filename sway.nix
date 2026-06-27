@@ -28,14 +28,14 @@
       if (null == iface)
       then null
       else "${desc} \${downspeed ${iface}} down \${upspeed ${iface}} up";
-    conkies = [
+    conkies = lib.remove null [
       "RAM \${mem}"
       "CPU \${cpubar}"
       (ifaceSpeed "WLAN" wlan)
       (ifaceSpeed "NET" eth)
       "\${time %a %d %b %R}"
     ];
-    conkieText = lib.strings.concatStringsSep " | " (lib.remove null conkies);
+    conkieText = lib.strings.concatStringsSep " | " conkies;
   in ''
     conky.config = {
       out_to_console = true,
