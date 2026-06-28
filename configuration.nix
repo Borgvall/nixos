@@ -4,7 +4,6 @@
   imports =
     [
       ./compressingswap.nix
-      ./flatpak.nix
       ./host-specific-options.nix
       ./objectscriptenv.nix
       ./sway.nix
