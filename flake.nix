@@ -2,7 +2,7 @@
   description = "Personal NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:Borgvall/nixpkgs/assert-podman-user";
   };
 
   outputs = { nixpkgs, ... }:
