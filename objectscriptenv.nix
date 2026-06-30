@@ -62,7 +62,7 @@ in {
   users.users."${containerUser}" = {
     isSystemUser = true;
     uid = containerUid;
-    group = "podman";
+    group = containerUser;
     createHome = true;
     home = containerUserHome;
     linger = true;
