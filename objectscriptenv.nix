@@ -1,14 +1,15 @@
-{pkgs, lib, ...}:
+{ pkgs, lib, ... }:
 
-let 
+let
   containerUser = "iris-development";
   containerUserHome = "/var/home/${containerUser}";
   containerName = containerUser;
   irisDataDir = "${containerUserHome}/iris-data";
-  containerUid = 51773;  # DO NOT CHANGE THIS
+  containerUid = 51773; # DO NOT CHANGE THIS
   durableMountDir = "/dur";
   iscDataDirectory = "${durableMountDir}/iconfig";
-in {
+in
+{
   programs.vscode = {
     enable = true;
     extensions = lib.map (pkgPath: pkgs.callPackage pkgPath { }) [
@@ -23,14 +24,18 @@ in {
     dockerCompat = true;
   };
 
-  environment.shellAliases = let 
-    runInContainer = command: "sudo -u ${containerUser} HOME=${containerUserHome} sh -c 'cd ${containerUserHome} && podman exec -it ${containerName} ${command}'";
-  in {
-    iris-bash = runInContainer "/bin/bash";
-    iris-term = runInContainer "iris session IRIS";
+  environment.shellAliases =
+    let
+      runInContainer =
+        command:
+        "sudo -u ${containerUser} HOME=${containerUserHome} sh -c 'cd ${containerUserHome} && podman exec -it ${containerName} ${command}'";
+    in
+    {
+      iris-bash = runInContainer "/bin/bash";
+      iris-term = runInContainer "iris session IRIS";
 
-    iris-web = "xdg-open http://127.0.0.1:52773/csp/sys/UtilHome.csp";
-  };
+      iris-web = "xdg-open http://127.0.0.1:52773/csp/sys/UtilHome.csp";
+    };
 
   virtualisation.oci-containers = {
     backend = "podman";
@@ -69,7 +74,7 @@ in {
     extraGroups = [
       "podman"
     ];
-    
+
     # Ermöglicht Rootless Podman das Mapping von UIDs innerhalb des Containers
     autoSubUidGidRange = true;
   };

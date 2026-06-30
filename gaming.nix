@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   boot.kernelModules = [ "ntsync" ];
@@ -18,27 +23,32 @@
   # This is needed for using nixpkgs' protons with Heroic and others.
   #
   # Discussion: https://discourse.nixos.org/t/using-proton-ge-bin-package-outside-of-steam/77598/2
-  systemd.user.tmpfiles =  {
+  systemd.user.tmpfiles = {
     enable = true; # Let this fail, if someone changes the default.
-    rules = let 
-      steaminstalldir = "%h/.local/share/Steam";
-      compatdir = "${steaminstalldir}/compatibilitytools.d";
-      steamdir = "%h/.steam";
-    in [
-      "d ${compatdir} - - - - -"
+    rules =
+      let
+        steaminstalldir = "%h/.local/share/Steam";
+        compatdir = "${steaminstalldir}/compatibilitytools.d";
+        steamdir = "%h/.steam";
+      in
+      [
+        "d ${compatdir} - - - - -"
 
-      # When Steam gets started for the first time, it creates a directory with
-      # symlinks to the install directory (among other things). Third party
-      # tools are using these to find Proton versions.
-      "d ${steamdir} - - - - -"
-      "L ${steamdir}/root - - - - ${steaminstalldir}"
-      "L ${steamdir}/steam - - - - ${steaminstalldir}"
-    ] ++ 
-    map (proton: let
+        # When Steam gets started for the first time, it creates a directory with
+        # symlinks to the install directory (among other things). Third party
+        # tools are using these to find Proton versions.
+        "d ${steamdir} - - - - -"
+        "L ${steamdir}/root - - - - ${steaminstalldir}"
+        "L ${steamdir}/steam - - - - ${steaminstalldir}"
+      ]
+      ++ map (
+        proton:
+        let
           link = "${compatdir}/${proton.pname}";
           target = proton.steamcompattool.outPath;
-        in "L+ ${link} - - - - ${target}"
-        ) config.programs.steam.extraCompatPackages;
+        in
+        "L+ ${link} - - - - ${target}"
+      ) config.programs.steam.extraCompatPackages;
   };
 
   programs.gamemode.enable = true;

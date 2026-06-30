@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.sway = {
@@ -22,30 +27,31 @@
   # Enable Vulkan-renderer, allows one to enable HDR
   environment.sessionVariables.WLR_RENDERER = "vulkan";
 
-  environment.etc."conky/conky-sway.conf".text = let
-    inherit (config.hostSpecifics.interfaceNames) wlan eth;
-    ifaceSpeed = desc: iface:
-      if (null == iface)
-      then null
-      else "${desc} \${downspeed ${iface}} down \${upspeed ${iface}} up";
-    conkies = lib.remove null [
-      "RAM \${mem}"
-      "CPU \${cpubar}"
-      (ifaceSpeed "WLAN" wlan)
-      (ifaceSpeed "NET" eth)
-      "\${time %a %d %b %R}"
-    ];
-    conkieText = lib.strings.concatStringsSep " | " conkies;
-  in ''
-    conky.config = {
-      out_to_console = true,
-      out_to_x = false,
-    }
+  environment.etc."conky/conky-sway.conf".text =
+    let
+      inherit (config.hostSpecifics.interfaceNames) wlan eth;
+      ifaceSpeed =
+        desc: iface:
+        if (null == iface) then null else "${desc} \${downspeed ${iface}} down \${upspeed ${iface}} up";
+      conkies = lib.remove null [
+        "RAM \${mem}"
+        "CPU \${cpubar}"
+        (ifaceSpeed "WLAN" wlan)
+        (ifaceSpeed "NET" eth)
+        "\${time %a %d %b %R}"
+      ];
+      conkieText = lib.strings.concatStringsSep " | " conkies;
+    in
+    ''
+      conky.config = {
+        out_to_console = true,
+        out_to_x = false,
+      }
 
-    conky.text = [[
-      ${conkieText}
-    ]]
-  '';
+      conky.text = [[
+        ${conkieText}
+      ]]
+    '';
 
   environment.etc."xdg/alacritty/alacritty.toml".text = ''
     [window]

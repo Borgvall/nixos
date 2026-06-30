@@ -1,14 +1,13 @@
 { pkgs, ... }:
 
 {
-  imports =
-    [
-      ./compressingswap.nix
-      ./host-specific-options.nix
-      ./objectscriptenv.nix
-      ./sway.nix
-      ./vim.nix
-    ];
+  imports = [
+    ./compressingswap.nix
+    ./host-specific-options.nix
+    ./objectscriptenv.nix
+    ./sway.nix
+    ./vim.nix
+  ];
 
   services.fstrim.enable = true;
 
@@ -36,7 +35,8 @@
     dates = "daily";
     allowReboot = false;
     flags = [
-      "--update-input" "nixpkgs"
+      "--update-input"
+      "nixpkgs"
       "--no-write-lock-file"
       "--print-build-logs"
     ];
@@ -47,7 +47,10 @@
   };
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     auto-optimise-store = true;
   };
 
@@ -57,7 +60,7 @@
     enable = true;
   };
   services.desktopManager.gnome.enable = true;
-  
+
   # Hint Electron Apps to use Wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -67,7 +70,7 @@
     options = "grp:sclk_toggle";
   };
 
-  console.useXkbConfig = true; 
+  console.useXkbConfig = true;
 
   # Enable CUPS to print documents.
   services.printing = {
@@ -88,7 +91,10 @@
 
   # Firewall: Port 427 (SLP) wird oft für die HP-Erkennung benötigt
   #           Port 161 SNMP status check of HP Printers
-  networking.firewall.allowedUDPPorts = [ 161 427 ];
+  networking.firewall.allowedUDPPorts = [
+    161
+    427
+  ];
 
   services.pipewire = {
     enable = true;
@@ -106,7 +112,10 @@
 
   users.users.johannes = {
     isNormalUser = true;
-    extraGroups = [ "libvirtd" "wheel" ];
+    extraGroups = [
+      "libvirtd"
+      "wheel"
+    ];
     uid = 1000;
   };
 

@@ -1,6 +1,6 @@
-{ config, ...}:
+{ config, ... }:
 let
-  hasSwapDevice = [] != config.swapDevices;
+  hasSwapDevice = [ ] != config.swapDevices;
 in
 {
   boot.zswap.enable = hasSwapDevice;
