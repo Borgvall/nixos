@@ -73,5 +73,4 @@ in {
   users.groups."${containerUser}" = {
     gid = containerUid;
   };
-  users.groups.podman.members = [containerUser];
 }
