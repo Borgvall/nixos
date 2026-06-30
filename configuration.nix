@@ -170,6 +170,7 @@
 
   environment.systemPackages = with pkgs; [
     ghc
+    nixfmt
 
     discord
     signal-desktop
