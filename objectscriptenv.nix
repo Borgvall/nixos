@@ -19,11 +19,6 @@ in
     ];
   };
 
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-  };
-
   environment.shellAliases =
     let
       runInContainer =
