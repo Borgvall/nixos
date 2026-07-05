@@ -184,6 +184,8 @@
     discord
     signal-desktop
 
+    chromium
+
     rhythmbox
     celluloid
     geeqie
