@@ -180,6 +180,7 @@
   environment.systemPackages = with pkgs; [
     ghc
     nixfmt
+    claude-code
 
     discord
     signal-desktop
