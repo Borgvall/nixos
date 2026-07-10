@@ -3,6 +3,7 @@
 {
   imports = [
     ./compressingswap.nix
+    ./claude-code.nix
     ./host-specific-options.nix
     ./objectscriptenv.nix
     ./sway.nix
@@ -180,7 +181,6 @@
   environment.systemPackages = with pkgs; [
     ghc
     nixfmt
-    claude-code
 
     discord
     signal-desktop
