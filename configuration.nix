@@ -183,7 +183,6 @@
     nixfmt
     gh
 
-    discord
     signal-desktop
 
     chromium
