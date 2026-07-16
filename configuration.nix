@@ -4,6 +4,7 @@
   imports = [
     ./compressingswap.nix
     ./claude-code.nix
+    ./dvd-mount.nix
     ./host-specific-options.nix
     ./objectscriptenv.nix
     ./sway.nix
