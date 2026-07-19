@@ -8,6 +8,7 @@
     ./host-specific-options.nix
     ./objectscriptenv.nix
     ./sway.nix
+    ./upgradesandgc.nix
     ./vim.nix
   ];
 
@@ -30,23 +31,6 @@
   time.timeZone = "Europe/Berlin";
 
   i18n.defaultLocale = "de_DE.UTF-8";
-
-  system.autoUpgrade = {
-    enable = true;
-    runGarbageCollection = true;
-    dates = "daily";
-    allowReboot = false;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--no-write-lock-file"
-      "--print-build-logs"
-    ];
-  };
-
-  nix.gc = {
-    options = "--delete-older-than 14d";
-  };
 
   nix.settings = {
     experimental-features = [
