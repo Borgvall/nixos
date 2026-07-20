@@ -84,7 +84,7 @@
       #scale 1.2
     }
 
-    gaps inner 8
+    gaps inner 4
 
     font pango:Source Code Pro Regular 11
 
