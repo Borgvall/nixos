@@ -169,7 +169,6 @@
     gh
 
     signal-desktop
-    wire-desktop
 
     chromium
 

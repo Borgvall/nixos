@@ -227,6 +227,7 @@
       bindsym v exec gvim
       bindsym p exec seahorse
       bindsym s exec steam
+      bindsym w exec chromium --app="https://app.wire.com"
 
       # back to normal: Enter or Escape
       bindsym Return mode "default"
