@@ -1,7 +1,11 @@
 { pkgs, ... }:
+let
+  agent-lsp = pkgs.callPackage ./pkgs/agent-lsp.nix {};
+in
 {
   environment.systemPackages = with pkgs; [
     claude-code
+    agent-lsp
   ];
 
   programs.vscode.extensions = with pkgs.vscode-extensions; [
