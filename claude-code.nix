@@ -6,6 +6,7 @@ in
   environment.systemPackages = with pkgs; [
     claude-code
     agent-lsp
+    github-mcp-server
   ];
 
   programs.vscode.extensions = with pkgs.vscode-extensions; [
