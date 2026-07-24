@@ -13,7 +13,7 @@
           modules = [
             ./hosts/johannes-pc/configuration.nix
             ./configuration.nix
-            ./ai.nix
+            #./ai.nix
             ./gaming.nix
           ];
         };
