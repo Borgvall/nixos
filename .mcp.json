@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "agent-lsp": {
+      "type": "stdio",
+      "command": "agent-lsp",
+      "args": [
+        "nix:nixd"
+      ]
+    }
+  }
+}
