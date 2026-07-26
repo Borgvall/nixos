@@ -1,20 +1,20 @@
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
-
+let
+  protons = with pkgs; [
+    proton-ge-bin
+    dwproton-bin
+  ];
+in
 {
   boot.kernelModules = [ "ntsync" ];
 
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-      dwproton-bin
-    ];
+    extraCompatPackages = protons;
     #remotePlay.openFirewall = true; # Optional: Für Steam Remote Play
     #dedicatedServer.openFirewall = true; # Optional: Für Source Dedicated Server
   };
@@ -48,7 +48,7 @@
           target = proton.steamcompattool.outPath;
         in
         "L+ ${link} - - - - ${target}"
-      ) config.programs.steam.extraCompatPackages;
+      ) protons;
   };
 
   programs.gamemode.enable = true;
