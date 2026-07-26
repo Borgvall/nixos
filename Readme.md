@@ -1,26 +1,18 @@
-# NixOS Configuration (nixos-johannes)
+# NixOS Configuration
 
-This is the modular NixOS configuration for the host `nixos-johannes`, designed for gaming, productivity, and a tiling window manager workflow.
+Personal NixOS flake configuration, currently for the host `johannes-pc`
+(Sway/GNOME, gaming, development, etc.).
 
-## ✨ Features
+## Apply
 
-* **Desktop Environment:** Sway (Wayland) with a custom configuration for multi-monitor setups (HP & Samsung) and a status bar via `conky`.
-* **Input:** System-wide keyboard layout configured for **Neo2** (`de`, `neo`).
-* **Gaming:** Optimized setup including Steam (with Gamescope & Proton-GE), Heroic Launcher, Bottles, MangoHud, and Gamemode.
-* **Editor:** Vim set as the default editor, heavily customized for LaTeX (`vimtex`) and Git (`vim-fugitive`).
-* **Filesystem:** Btrfs with subvolumes (`nixos-root`, `nixos-nix`, `home`) and zstd compression.
-* **Virtualization:** Enabled `libvirtd` and `virt-manager`.
+    sudo nixos-rebuild switch --flake .#johannes-pc
 
-## 📂 File Structure
+## Structure
 
-* **`configuration.nix`**: The central entry point. Manages system services, the user (`johannes`), network settings, and base packages.
-* **`sway.nix`**: Configuration for the Sway Window Manager, including keybindings, display outputs, and window-specific rules.
-* **`gaming.nix`**: Bundles all gaming-relevant packages and settings (Steam, Wine, drivers).
-* **`vim.nix`**: Configuration for Vim, including plugins and `.vimrc` settings.
-* **`hardware-configuration.nix`**: Automatically generated hardware detection and filesystem mounts.
+- `flake.nix` — entry point, defines `nixosConfigurations`.
+- `hosts/<name>/` — host-specific configuration (hardware, filesystems, hostname, ...).
+- Remaining `*.nix` files at the root — topical, host-independent modules (desktop, gaming, editor, maintenance, ...).
+- `pkgs/` — custom package definitions.
 
-## ℹ️ Notes
-
-* **State Version:** 25.11.
-* **Printing/Scanning:** HPLIP drivers for HP printers and scanners are pre-installed.
-* **Maintenance:** Automatic updates and Garbage Collection (daily, deleting items older than 7 days) are enabled.
+Details about individual modules (what's enabled, which options are set) live
+in the respective file rather than here, so this overview doesn't go stale.
