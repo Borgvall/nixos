@@ -3,10 +3,10 @@
 {
   imports = [
     ./compressingswap.nix
-    #./claude-code.nix
+    ./claude-code.nix
     ./dvd-mount.nix
     ./host-specific-options.nix
-    #./objectscriptenv.nix
+    ./objectscriptenv.nix
     ./sway.nix
     ./upgradesandgc.nix
     ./vim.nix
