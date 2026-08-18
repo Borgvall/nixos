@@ -140,12 +140,6 @@
   };
   programs.command-not-found.enable = false;
 
-  programs.virt-manager.enable = false;
-  virtualisation.libvirtd.enable = false;
-
-  # Dconf is needed by virt-manager
-  programs.dconf.enable = true;
-
   environment.systemPackages = with pkgs; [
     ghc
     nixfmt
