@@ -156,7 +156,7 @@
     mpv
     yt-dlp
 
-    libreoffice-fresh
+    libreoffice
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_US
