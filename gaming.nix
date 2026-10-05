@@ -61,8 +61,9 @@ in
     wineWow64Packages.staging
 
     ut1999
+    ut2004
   ];
 
   # Keep the Unreal Tournament ISOs in the Nix-store to avoid redownloading them.
-  system.extraDependencies = pkgs.ut1999.isos;
+  system.extraDependencies = [pkgs.ut2004Packages.image] ++ pkgs.ut1999.isos;
 }
