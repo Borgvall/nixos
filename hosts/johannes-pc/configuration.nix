@@ -14,7 +14,7 @@
   system.stateVersion = "25.11";
 
   hostSpecifics.interfaceNames = {
-    wlan = null; # Disabled for Kernel 7.2.9 issue
+    wlan = "wlo1";
     eth = "enp34s0";
   };
 }
