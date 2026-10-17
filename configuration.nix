@@ -5,7 +5,6 @@
     ./compressingswap.nix
     ./dvd-mount.nix
     ./host-specific-options.nix
-    ./mango.nix
     ./sway.nix
     ./upgradesandgc.nix
     ./vim.nix
