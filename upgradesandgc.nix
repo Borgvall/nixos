@@ -6,7 +6,7 @@ in
   system.autoUpgrade = {
     enable = true;
     runGarbageCollection = true;
-    dates = "daily";
+    dates = "monthly";
     allowReboot = false;
     flags = [
       "--update-input"
