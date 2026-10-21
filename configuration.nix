@@ -59,12 +59,12 @@
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
-  # drivers = [ pkgs.hplip ];
+    drivers = [ pkgs.hplip ];
   };
 
   hardware.sane = {
     enable = true;
-  # extraBackends = [ pkgs.hplip ];
+    extraBackends = [ pkgs.hplip ];
   };
 
   services.avahi = {
