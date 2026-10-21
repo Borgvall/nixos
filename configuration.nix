@@ -6,6 +6,7 @@
     ./dvd-mount.nix
     ./host-specific-options.nix
     ./hpofficejet.nix
+    ./kernellocal.nix
     ./sway.nix
     ./upgradesandgc.nix
     ./users.nix
@@ -23,8 +24,6 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.networkmanager.enable = true;
 
