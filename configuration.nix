@@ -7,6 +7,7 @@
     ./host-specific-options.nix
     ./sway.nix
     ./upgradesandgc.nix
+    ./users.nix
     ./vim.nix
   ];
 
@@ -93,20 +94,6 @@
     "\C-[[A"        history-search-backward
     "\C-[[B"        history-search-forward
   '';
-
-  users.users.johannes = {
-    isNormalUser = true;
-    extraGroups = [
-      "libvirtd"
-      "wheel"
-    ];
-    uid = 1000;
-  };
-
-  users.users.test = {
-    isNormalUser = true;
-    uid = 1001;
-  };
 
   nixpkgs.config.allowUnfree = true;
 
