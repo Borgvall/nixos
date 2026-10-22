@@ -8,6 +8,7 @@
     ./dvd-mount.nix
     ./host-specific-options.nix
     ./hpofficejet.nix
+    ./internet.nix
     ./sway.nix
     ./upgradesandgc.nix
     ./users.nix
@@ -49,9 +50,6 @@
   };
   services.desktopManager.gnome.enable = true;
 
-  # Hint Electron Apps to use Wayland
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
   services.xserver.xkb = {
     layout = "de,de";
     variant = "neo,nodeadkeys";
@@ -76,23 +74,9 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.firefox = {
-    enable = true;
-    languagePacks = [ "de" ];
-  };
-
-  programs.evolution = {
-    enable = true;
-  };
-
   programs.command-not-found.enable = true;
 
   environment.systemPackages = with pkgs; [
-    signal-desktop
-    wire-desktop
-
-    chromium
-
     rhythmbox
     celluloid
     geeqie
