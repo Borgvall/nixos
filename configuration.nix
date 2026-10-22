@@ -3,6 +3,7 @@
 {
   imports = [
     ./compressingswap.nix
+    ./developement.nix
     ./dictionaries.nix
     ./dvd-mount.nix
     ./host-specific-options.nix
@@ -75,10 +76,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.direnv = {
-    enable = true;
-  };
-
   programs.firefox = {
     enable = true;
     languagePacks = [ "de" ];
@@ -88,17 +85,6 @@
     enable = true;
   };
 
-  programs.git = {
-    enable = true;
-    package = pkgs.gitFull;
-    lfs.enable = true;
-    config = {
-      init = {
-        defaultBranch = "main";
-      };
-    };
-  };
-
   programs.nix-index = {
     enable = true;
     enableBashIntegration = true;
@@ -106,10 +92,6 @@
   programs.command-not-found.enable = false;
 
   environment.systemPackages = with pkgs; [
-    ghc
-    nixfmt
-    gh
-
     signal-desktop
     wire-desktop
 
