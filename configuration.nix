@@ -85,11 +85,7 @@
     enable = true;
   };
 
-  programs.nix-index = {
-    enable = true;
-    enableBashIntegration = true;
-  };
-  programs.command-not-found.enable = false;
+  programs.command-not-found.enable = true;
 
   environment.systemPackages = with pkgs; [
     signal-desktop
