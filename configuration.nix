@@ -3,6 +3,7 @@
 {
   imports = [
     ./compressingswap.nix
+    ./dictionaries.nix
     ./dvd-mount.nix
     ./host-specific-options.nix
     ./hpofficejet.nix
@@ -121,20 +122,9 @@
     yt-dlp
 
     libreoffice
-    hunspell
-    hunspellDicts.de_DE
-    hunspellDicts.en_US
-    hyphen
-    hyphenDicts.de_DE
-    hyphenDicts.en_US
 
     file
     net-tools
     psmisc
   ];
-
-  # Damit Apps die Wörterbücher auch finden:
-  environment.sessionVariables = {
-    DICPATH = "/run/current-system/sw/share/hunspell:/run/current-system/sw/share/hyphen";
-  };
 }
