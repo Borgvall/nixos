@@ -10,6 +10,7 @@
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
+      swayidle
       swaylock
       swaynotificationcenter
       fd
@@ -191,7 +192,11 @@
     # start sway inplace (preserves your layout/session, can be used to upgrade sway)
     bindsym $mod+Shift+y restart
     # exit sway (logs you out of your X session)
-    bindsym $mod+x exec "swaynag -t warning -m 'Do you really want to exit sway?' -B 'Logout' 'swaymsg exit' -B 'Suspend' '/home/johannes/bin/sway-suspend.sh' -B 'Poweroff' 'systemctl poweroff' -B 'Reboot' 'systemctl reboot'"
+    bindsym $mod+x exec swaynag -t warning -m 'Do you really want to exit sway?'\
+      -B 'Logout' 'swaymsg exit'\
+      -B 'Suspend' 'systemctl suspend'\
+      -B 'Poweroff' 'systemctl poweroff'\
+      -B 'Reboot' 'systemctl reboot'
     bindsym $mod+Shift+x exit
 
     # lock the screen
@@ -286,6 +291,10 @@
     exec swaync
     # Toggle control center
     bindsym $mod+dead_circumflex exec swaync-client -t -sw
+
+    # Lock screen before suspend
+    exec swayidle -w \
+      before-sleep 'swaylock -f'
 
     # See "window_properties" of `swaymsg -t get_tree`
     for_window [instance="origin.exe"] floating enable
