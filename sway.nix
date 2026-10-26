@@ -61,6 +61,9 @@
   environment.etc."sway/config".text = ''
     # sway config file (v4)
 
+    # Load NixOS sway settings
+    include /etc/sway/config.d/*.conf
+
     set $mod Mod4
 
     input "type:keyboard" {
