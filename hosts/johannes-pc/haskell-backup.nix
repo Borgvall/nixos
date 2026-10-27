@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, utils, ... }:
 let
   haskell-backup-service = name: {
     systemd.services."haskell-${name}" = {
@@ -27,8 +27,8 @@ let
 
   haskell-backup-service-starts-by-disk-availability = name: uuid:
   let
-    escapeHyphen = fileName: lib.replaceStrings ["-"] ["\\x2d"] fileName;
-    disk-device = "dev-disk-${escapeHyphen "by-uuid"}-${escapeHyphen uuid}.device";
+    escapeFN = utils.escapeSystemdPath;
+    disk-device = "dev-disk-${escapeFN "by-uuid"}-${escapeFN uuid}.device";
   in {
     systemd.services."haskell-${name}" = {
       bindsTo = [ disk-device ];
