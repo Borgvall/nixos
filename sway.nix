@@ -59,7 +59,10 @@
     opacity = 0.9
   '';
 
-  environment.etc."sway/config".text = ''
+  environment.etc."sway/config".text =
+    let
+      xkb = config.services.xserver.xkb;
+    in ''
     # sway config file (v4)
 
     # Load NixOS sway settings
@@ -68,9 +71,9 @@
     set $mod Mod4
 
     input "type:keyboard" {
-      xkb_layout "de,de"
-      xkb_variant "neo,nodeadkeys"
-      xkb_options grp:sclk_toggle
+      xkb_layout "${xkb.layout}"
+      xkb_variant "${xkb.variant}"
+      xkb_options ${xkb.options}
     }
 
     output * {
