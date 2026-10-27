@@ -7,7 +7,7 @@ let
       path = with pkgs; [ ghc btrfs-progs util-linux coreutils ];
       script = ''
         cd /root/haskell-backup
-        ./${name}.hs
+        runghc ./${name}.hs
         '';
     };
   };
