@@ -15,6 +15,7 @@
             ./configuration.nix
             ./ai.nix
             ./gaming.nix
+            ./virtualization.nix
           ];
         };
       };
