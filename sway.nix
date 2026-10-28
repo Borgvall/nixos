@@ -91,6 +91,10 @@
       #scale 1.2
     }
 
+    output "Unknown Unknown Unknown" {
+      mode 1600x1200
+    }
+
     gaps inner 4
 
     font pango:Source Code Pro Regular 11
