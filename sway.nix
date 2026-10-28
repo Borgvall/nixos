@@ -26,7 +26,7 @@
   xdg.portal.wlr.enable = true;
 
   # Enable Vulkan-renderer, allows one to enable HDR
-  environment.sessionVariables.WLR_RENDERER = "vulkan";
+  environment.sessionVariables = lib.mkIf config.hostSpecifics.preferVulkan {WLR_RENDERER = "vulkan";};
 
   environment.etc."conky/conky-sway.conf".text =
     let
