@@ -15,6 +15,12 @@
             ./configuration.nix
           ];
         };
+        nixos-vm = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./hosts/nixos-vm/configuration.nix
+            ./configuration.nix
+          ];
+        };
       };
     };
 }
