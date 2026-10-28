@@ -136,12 +136,6 @@
     bindsym $mod+Up move up
     bindsym $mod+Right move right
 
-    # split in horizontal orientation
-    bindsym $mod+z split horizontal
-
-    # split in vertical orientation
-    bindsym $mod+o split vertical
-
     # enter fullscreen mode for the focused container
     bindsym $mod+l fullscreen
 
