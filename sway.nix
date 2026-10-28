@@ -95,6 +95,10 @@
       mode 1600x1200
     }
 
+    output "Red Hat, Inc. QEMU Monitor Unknown" {
+      mode 1600x1200
+    }
+
     gaps inner 4
 
     font pango:Source Code Pro Regular 11
