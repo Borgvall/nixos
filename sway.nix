@@ -238,6 +238,7 @@
       bindsym v exec gvim
       bindsym p exec seahorse
       bindsym s exec steam
+      bindsym h exec heroic
       bindsym w exec wire-desktop --password-store=gnome-libsecret
 
       # back to normal: Enter or Escape
@@ -284,11 +285,8 @@
     }
 
     #startup programs at the beginning
-    exec evolution
-    exec firefox
     exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
     exec dbus-update-activation-environment --systemd --all
-    #exec corectrl
 
     # Sway notification center
     exec swaync
