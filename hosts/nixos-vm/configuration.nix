@@ -9,5 +9,5 @@
 
   system.stateVersion = "26.11";
 
-  options.hostSpecifics.preferVulkan = false;
+  hostSpecifics.preferVulkan = false;
 }
