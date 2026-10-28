@@ -13,4 +13,5 @@
   services.spice-vdagentd.enable = true;
 
   hostSpecifics.preferVulkan = false;
+  hostSpecifics.interfaceNames.eth = "enp1s0";
 }
