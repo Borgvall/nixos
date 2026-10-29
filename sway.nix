@@ -300,7 +300,7 @@
       before-sleep 'swaylock -f'
 
     # See "window_properties" of `swaymsg -t get_tree`
-    for_window [instance="origin.exe"] floating enable
+    for_window [title="EA"] floating enable
     for_window [app_id="zoom"] floating enable
     for_window [title="Ubisoft Connect"] floating enable
   '';
