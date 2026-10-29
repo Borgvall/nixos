@@ -8,8 +8,4 @@
       OLLAMA_CONTEXT_LENGTH = "8192";
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    alpaca
-  ];
 }
