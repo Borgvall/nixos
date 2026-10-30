@@ -10,7 +10,14 @@
   system.stateVersion = "26.11";
 
   hostSpecifics.preferVulkan = false;
-  hostSpecifics.interfaceNames.eth = "enp1s0";
+  hostSpecifics.interfaceNames = {
+    eth = "enp1s0";
+  };
+
+  hostSpecifics.extraPrograms = {
+    internet = false;
+    development = false;
+  };
 
   services.xserver.xkb.variant = "nodeadkeys,neo";
 

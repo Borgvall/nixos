@@ -14,4 +14,9 @@
 
   hostSpecifics.preferVulkan = false;
   hostSpecifics.interfaceNames.eth = "enp1s0";
+
+  hostSpecifics.extraPrograms = {
+    internet = false;
+    development = false;
+  };
 }

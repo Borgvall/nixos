@@ -19,5 +19,17 @@
         description = "Name of ethernet interface, null means no such interface exists.";
       };
     };
+    extraPrograms = {
+      internet = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Install additional internet programs.";
+      };
+      development = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Install additional development tools.";
+      };
+    };
   };
 }

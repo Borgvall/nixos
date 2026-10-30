@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.direnv = {
@@ -16,9 +16,13 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    ghc
-    nixfmt
-    gh
-  ];
+  environment.systemPackages =
+    if config.hostSpecifics.extraPrograms.development
+    then with pkgs; [
+      ghc
+      nixfmt
+      gh
+    ]
+    else [
+    ];
 }
