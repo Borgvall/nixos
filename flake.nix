@@ -20,6 +20,12 @@
             ./hosts/nixos-vm/configuration.nix
             ./configuration.nix
           ];
+        uta-laptop = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./hosts/uta-laptop/configuration.nix
+            ./configuration.nix
+          ];
+        };
         };
       };
     };
