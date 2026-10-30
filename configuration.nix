@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -52,7 +52,7 @@
 
   services.xserver.xkb = {
     layout = "de,de";
-    variant = "neo,nodeadkeys";
+    variant = lib.mkDefault "neo,nodeadkeys";
     options = "grp:sclk_toggle";
   };
 

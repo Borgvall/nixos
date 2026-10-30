@@ -12,6 +12,8 @@
   hostSpecifics.preferVulkan = false;
   hostSpecifics.interfaceNames.eth = "enp1s0";
 
+  services.xserver.xkb.variant = "nodeadkeys,neo";
+
   users.users.uta = {
     description = "Uta Röhl";
     isNormalUser = true;
