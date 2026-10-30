@@ -8,6 +8,7 @@
       pkgs.vim-full.customize {
         vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
           start = [
+            (pkgs.callPackage ./pkgs/vim-spellang-de/package.nix {})
             vim-fugitive
             vimtex
             vim-lsp
