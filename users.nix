@@ -2,6 +2,7 @@
 
 {
   users.users.johannes = {
+    description = "Johannes Röhl";
     isNormalUser = true;
     extraGroups = [
       "libvirtd"
