@@ -2,7 +2,7 @@
 
 {
   programs.direnv = {
-    enable = true;
+    enable = config.hostSpecifics.extraPrograms.development;
   };
 
   programs.git = {
