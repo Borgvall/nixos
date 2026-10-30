@@ -1,13 +1,21 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
+let
+  languagePacks = [ "de" ];
+in
 {
   programs.firefox = {
     enable = true;
-    languagePacks = [ "de" ];
+    inherit languagePacks;
+  };
+
+  programs.thunderbird = {
+    # set `enable = true;` in the host's configuration
+    inherit languagePacks;
   };
 
   programs.evolution = {
-    enable = true;
+    enable = !config.programs.thunderbird.enable;
   };
 
   # Hint Electron Apps/Chromium to use Wayland

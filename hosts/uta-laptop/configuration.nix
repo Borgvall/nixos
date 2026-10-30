@@ -22,6 +22,5 @@
 
   programs.thunderbird = {
     enable = true;
-    languagePacks = ["de"];
   };
 }
