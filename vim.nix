@@ -32,7 +32,7 @@
           nnoremap gl <C-w>w
           nnoremap gL <C-w>W
 
-          set spell spelllang=de
+          set spell spelllang=en
 
           " Vertikales Aufteilen für den „diff-Modus“
           set diffopt=filler,vertical
