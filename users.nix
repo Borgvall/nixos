@@ -3,6 +3,7 @@
 {
   users.users.johannes = {
     description = "Johannes Röhl";
+    initialPassword = "12345"; # change it promptly ;-)
     isNormalUser = true;
     extraGroups = [
       "libvirtd"
