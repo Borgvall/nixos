@@ -6,7 +6,7 @@
   ];
 
   fileSystems."/" = {
-    options = [ "compress=zstd" "noatime" ];
+    options = [ "compress=zstd" "noatime" "ssd_spread" ];
   };
 
   boot.loader.efi.canTouchEfiVariables = lib.mkForce true;

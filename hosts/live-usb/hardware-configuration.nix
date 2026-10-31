@@ -14,7 +14,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/cf9ed6d6-53a2-4568-93c0-8b8bcad9c82a";
+    { device = "/dev/disk/by-uuid/b0ae0310-a748-493e-8d47-cbfe274d1cca";
       fsType = "btrfs";
     };
 
@@ -25,7 +25,8 @@
     };
 
   swapDevices =
-    [ ];
+    [
+    ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
