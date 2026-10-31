@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -21,4 +21,8 @@
     internet = false;
     development = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    gparted
+  ];
 }
