@@ -76,6 +76,10 @@
 
   programs.command-not-found.enable = true;
 
+  environment.shellAliases = {
+    sudo-wayland = "sudo --preserve-env=XDG_RUNTIME_DIR,WAYLAND_DISPLAY";
+  };
+
   environment.systemPackages = with pkgs; [
     rhythmbox
     celluloid
