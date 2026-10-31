@@ -15,6 +15,12 @@
             ./configuration.nix
           ];
         };
+        live-usb = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./hosts/live-usb/configuration.nix
+            ./configuration.nix
+          ];
+        };
         nixos-vm = nixpkgs.lib.nixosSystem {
           modules = [
             ./hosts/nixos-vm/configuration.nix
