@@ -13,6 +13,10 @@
       init = {
         defaultBranch = "main";
       };
+      user = {
+        name = "Johannes Röhl";
+        email = "joroehl@gmx.de";
+      };
     };
   };
 
