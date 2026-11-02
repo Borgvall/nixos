@@ -18,10 +18,11 @@
       wofi-emoji
       alacritty
       conky
-      source-code-pro
       polkit_gnome
     ];
   };
+
+  fonts.packages = [ pkgs.source-code-pro ];
 
   xdg.portal.wlr.enable = true;
 
@@ -110,8 +111,6 @@
 
     # start a terminal
     bindsym $mod+Return exec alacritty
-
-    bindsym $mod+k exec xkill
 
     # kill focused window
     bindsym $mod+v kill
@@ -251,10 +250,6 @@
 
     # start an environment for setting configuration
     mode "Einstellungen" {
-      # Switch between stereo and 5.1 surround mode of hdmi
-      bindsym s exec pactl set-card-profile alsa_card.pci-0000_28_00.1 output:hdmi-stereo
-      bindsym m exec pactl set-card-profile alsa_card.pci-0000_28_00.1 output:hdmi-surround
-      
       # Wechsel zwischen PAL und NTSC
       bindsym p output * mode 3840x2160@50Hz
       bindsym n output * mode 3840x2160@60Hz
