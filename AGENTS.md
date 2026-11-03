@@ -88,7 +88,7 @@ needs. Everything host-independent lives in a root-level `*.nix` module.
 Anything this configuration needs but nixpkgs doesn't provide lives in `pkgs/`:
 as a single `pkgs/<name>.nix`, or as `pkgs/<name>/package.nix` when the
 definition needs sibling files. It is instantiated at the call site with
-`pkgs.callPackage <path> {}` (see `developement.nix` and `vim.nix`). Don't
+`pkgs.callPackage <path> {}` (see `development.nix` and `vim.nix`). Don't
 inline a derivation in a system module, and don't smuggle a package in through
 an overlay.
 
@@ -145,7 +145,7 @@ because reformatting buries the actual diff.
 
 - `nixfmt FILE` rewrites the file **in place** and prints nothing (use the
   `nixfmt -` stdin form if you want the output); `nixfmt --check FILE` only
-  reports. `nixfmt` comes from `developement.nix`, and `flake.nix` has no
+  reports. `nixfmt` comes from `development.nix`, and `flake.nix` has no
   `formatter` output, so `nix fmt` is not available.
 - Format files you create or rewrite completely; leave the formatting of files
   you only edit locally alone.

@@ -3,7 +3,7 @@
 {
   imports = [
     ./compressingswap.nix
-    ./developement.nix
+    ./development.nix
     ./dictionaries.nix
     ./dvd-mount.nix
     ./host-specific-options.nix
