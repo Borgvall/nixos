@@ -1,5 +1,8 @@
 { pkgs, config, ... }:
 
+let
+  agent-lsp = pkgs.callPackage pkgs/agent-lsp.nix {};
+in
 {
   programs.direnv = {
     enable = config.hostSpecifics.extraPrograms.development;
@@ -26,6 +29,9 @@
       ghc
       nixfmt
       gh
+
+      opencode
+      agent-lsp
     ]
     else [
     ];
