@@ -2,19 +2,19 @@
 
 buildGoModule rec {
   pname = "agent-lsp";
-  version = "0.16.0";
+  version = "0.23.6";
 
   src = fetchFromGitHub {
     owner = "blackwell-systems";
     repo = "agent-lsp";
     rev = "v${version}";
-    hash = "sha256-0SNpLduoHKydIuZpd8C7S9tR1HK9YuZSh+Af6V6HBBo=";
+    hash = "sha256-hJ4MUsSpTAb8gxKdfwN/CWHdjbkgOcHmopzcFFnJFzM=";
   };
 
   # entspricht `go install .../cmd/agent-lsp@latest`
   subPackages = [ "cmd/agent-lsp" ];
 
-  vendorHash = "sha256-P0BasPcInXymqwzPeLD/O4oicExlBwT0y4z44HIORno=";
+  vendorHash = "sha256-aBokNk3GGCkMX5UYotiQHzWRKfHF6Tc0EA4hIj5XIKg=";
 
   meta = with lib; {
     description = "MCP server bridging Language Server Protocol into agent-native workflows";
