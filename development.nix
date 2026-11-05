@@ -30,7 +30,7 @@ in
       nixfmt
       gh
 
-      opencode
+      #opencode
       agent-lsp
     ]
     else [
