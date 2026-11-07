@@ -1,7 +1,12 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
-  agent-lsp = pkgs.callPackage pkgs/agent-lsp.nix {};
+  agent-lsp = pkgs.callPackage pkgs/agent-lsp.nix { };
 in
 {
   programs.direnv = {
@@ -23,9 +28,9 @@ in
     };
   };
 
-  environment.systemPackages =
-    if config.hostSpecifics.extraPrograms.development
-    then with pkgs; [
+  environment.systemPackages = lib.optionals config.hostSpecifics.extraPrograms.development (
+    with pkgs;
+    [
       ghc
       nixfmt
       gh
@@ -33,6 +38,5 @@ in
       #opencode
       agent-lsp
     ]
-    else [
-    ];
+  );
 }

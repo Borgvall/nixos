@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
   languagePacks = [ "de" ];
@@ -21,14 +26,13 @@ in
   # Hint Electron Apps/Chromium to use Wayland
   environment.sessionVariables.NIXOS_OZONE_WL = 1;
 
-  environment.systemPackages =
-    if config.hostSpecifics.extraPrograms.internet
-    then with pkgs; [
+  environment.systemPackages = lib.optionals config.hostSpecifics.extraPrograms.internet (
+    with pkgs;
+    [
       signal-desktop
       wire-desktop
 
       chromium
     ]
-    else [
-    ];
+  );
 }
