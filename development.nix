@@ -34,6 +34,7 @@ in
     [
       ghc
       nixfmt
+      nixd
       gh
 
       #opencode

@@ -73,8 +73,4 @@
       }
     );
   };
-
-  environment.systemPackages = with pkgs; [
-    nixd
-  ];
 }
