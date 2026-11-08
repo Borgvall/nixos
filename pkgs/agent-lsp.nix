@@ -2,13 +2,13 @@
 
 buildGoModule rec {
   pname = "agent-lsp";
-  version = "0.23.6";
+  version = "0.24.2";
 
   src = fetchFromGitHub {
     owner = "blackwell-systems";
     repo = "agent-lsp";
     rev = "v${version}";
-    hash = "sha256-hJ4MUsSpTAb8gxKdfwN/CWHdjbkgOcHmopzcFFnJFzM=";
+    hash = "sha256-WSl3/xlN3Re8eN3sy9Zm49ljI0vrmm0YWTEY/wI7ZKY=";
   };
 
   # entspricht `go install .../cmd/agent-lsp@latest`
