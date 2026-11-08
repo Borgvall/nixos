@@ -77,8 +77,4 @@
   environment.systemPackages = with pkgs; [
     nixd
   ];
-
-  programs.vscode.extensions = [
-    pkgs.vscode-extensions.vscodevim.vim
-  ];
 }
