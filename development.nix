@@ -7,10 +7,11 @@
 
 let
   agent-lsp = pkgs.callPackage pkgs/agent-lsp.nix { };
+  installExtraPackages = config.hostSpecifics.extraPrograms.development;
 in
 {
   programs.direnv = {
-    enable = config.hostSpecifics.extraPrograms.development;
+    enable = installExtraPackages;
   };
 
   programs.git = {
@@ -28,7 +29,7 @@ in
     };
   };
 
-  environment.systemPackages = lib.optionals config.hostSpecifics.extraPrograms.development (
+  environment.systemPackages = lib.optionals installExtraPackages (
     with pkgs;
     [
       ghc
