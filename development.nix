@@ -16,7 +16,7 @@ in
 
   programs.git = {
     enable = true;
-    package = pkgs.gitFull;
+    package = if installExtraPackages then pkgs.gitFull else pkgs.git;
     lfs.enable = true;
     config = {
       init = {
