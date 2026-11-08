@@ -18,7 +18,7 @@ buildGoModule rec {
 
   meta = with lib; {
     description = "MCP server bridging Language Server Protocol into agent-native workflows";
-    homepage = "https://github.com/blackwell-systems/agent-lsp";
+    homepage = "https://agent-lsp.com";
     license = licenses.mit;
     mainProgram = "agent-lsp";
   };
