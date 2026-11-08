@@ -1,5 +1,42 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 
+let
+  # LSP servers registered in Vim. A server is only registered when its
+  # executable is on PATH, so toolchains that direnv adds inside a project
+  # (e.g. the Haskell server) work without changing this module.
+  lspServers = [
+    {
+      name = "haskell-language-server";
+      command = [
+        "haskell-language-server-wrapper"
+        "--lsp"
+      ];
+      filetypes = [ "haskell" ];
+    }
+    {
+      name = "nixd";
+      command = [ "nixd" ];
+      filetypes = [ "nix" ];
+    }
+  ];
+
+  vimString = text: "'${lib.replaceStrings [ "'" ] [ "''" ] text}'";
+  vimList = items: "[${lib.concatMapStringsSep ", " vimString items}]";
+
+  lspSetup = lib.concatMapStringsSep "\n" (server: ''
+    if executable('${builtins.head server.command}')
+      au User lsp_setup call lsp#register_server({
+            \ 'name': ${vimString server.name},
+            \ 'cmd': ${vimList server.command},
+            \ 'whitelist': ${vimList server.filetypes},
+            \ })
+    endif
+  '') lspServers;
+in
 {
   programs.vim = {
     enable = true;
@@ -8,7 +45,7 @@
       pkgs.vim-full.customize {
         vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
           start = [
-            (pkgs.callPackage ./pkgs/vim-spelllang-de/package.nix {})
+            (pkgs.callPackage ./pkgs/vim-spelllang-de/package.nix { })
             vim-fugitive
             vimtex
             vim-lsp
@@ -37,25 +74,7 @@
           " Vertikales Aufteilen für den „diff-Modus“
           set diffopt=filler,vertical
 
-
-          " HLS Registrierung aktivieren, sobald wir eine Haskell-Datei öffnen
-          if executable('haskell-language-server-wrapper')
-              au User lsp_setup call lsp#register_server({
-                  \ 'name': 'haskell-language-server',
-                  \ 'cmd': {server_info->['haskell-language-server-wrapper', '--lsp']},
-                  \ 'whitelist': ['haskell'],
-                  \ })
-          endif
-
-          " Nix Language Server (nixd) Registrierung aktivieren
-          if executable('nixd')
-              au User lsp_setup call lsp#register_server({
-                  \ 'name': 'nixd',
-                  \ 'cmd': {server_info->['nixd']},
-                  \ 'whitelist': ['nix'],
-                  \ })
-          endif
-
+          ${lspSetup}
           " Nützliche Tastenkombinationen für die Entwicklung
           function! s:on_lsp_buffer_enabled() abort
               setlocal omnifunc=lsp#complete
