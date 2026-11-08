@@ -10,6 +10,16 @@ let
   # (e.g. the Haskell server) work without changing this module.
   lspServers = [
     {
+      name = "clangd";
+      command = [ "clangd" ];
+      filetypes = [
+        "c"
+        "cpp"
+        "objc"
+        "objcpp"
+      ];
+    }
+    {
       name = "haskell-language-server";
       command = [
         "haskell-language-server-wrapper"
@@ -21,6 +31,14 @@ let
       name = "nixd";
       command = [ "nixd" ];
       filetypes = [ "nix" ];
+    }
+    {
+      name = "texlab";
+      command = [ "texlab" ];
+      filetypes = [
+        "tex"
+        "bib"
+      ];
     }
   ];
 
