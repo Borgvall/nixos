@@ -8,7 +8,6 @@
     ./dvd-mount.nix
     ./host-specific-options.nix
     ./hpofficejet.nix
-    ./hyprland.nix
     ./internet.nix
     ./sway.nix
     ./upgradesandgc.nix
