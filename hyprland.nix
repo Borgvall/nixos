@@ -330,9 +330,6 @@ in
 {
   programs.hyprland.enable = true;
 
-  # Sway stays available in the display manager, but Hyprland is the default.
-  services.displayManager.defaultSession = "hyprland";
-
   # Plugins and tools used by the Hyprland session. programs.sway's
   # extraPackages only puts these into sway's wrapper, not into PATH.
   environment.systemPackages = with pkgs; [
