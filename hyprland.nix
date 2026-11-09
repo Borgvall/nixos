@@ -206,18 +206,16 @@ let
     -- Hyprland cannot restart in place; reload instead of restarting
     hl.bind(mainMod .. " + SHIFT + Y", hl.dsp.reload_config())
 
-    -- Exit Hyprland
+    -- Session menu (logout, suspend, reboot, poweroff)
     hl.bind(
       mainMod .. " + X",
       hl.dsp.exec_cmd(
-        "swaynag -t warning -m 'Do you really want to exit Hyprland?' "
-          .. "-B 'Logout' 'hyprctl dispatch \"hl.dsp.exit()\"' "
-          .. "-B 'Suspend' 'systemctl suspend' "
-          .. "-B 'Poweroff' 'systemctl poweroff' "
-          .. "-B 'Reboot' 'systemctl reboot'"
+        "wlogout --layout /etc/wlogout/layout --css /etc/wlogout/style.css"
       )
     )
-    hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exit())
+
+    -- Exit Hyprland gracefully, closing all applications first
+    hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exec_cmd("hyprshutdown"))
 
     -- Lock the screen
     hl.bind(mainMod .. " + Pause", hl.dsp.exec_cmd("swaylock"))
@@ -336,17 +334,49 @@ in
     alacritty
     conky
     fd
+    hyprshutdown
     polkit_gnome
     swaybg
     swayidle
     swaylock
     swaynotificationcenter
     waybar
+    wlogout
     wofi
     wofi-emoji
   ];
 
   environment.etc."xdg/hypr/hyprland.lua".source = hyprlandConfig;
+
+  # Session menu replacing sway's swaynag. Logout uses hyprshutdown, which
+  # closes all applications gracefully before Hyprland exits.
+  environment.etc."wlogout/layout".text = ''
+    {
+        "label" : "logout",
+        "action" : "hyprshutdown",
+        "text" : "Logout",
+        "keybind" : "e"
+    }
+    {
+        "label" : "suspend",
+        "action" : "systemctl suspend",
+        "text" : "Suspend",
+        "keybind" : "u"
+    }
+    {
+        "label" : "reboot",
+        "action" : "systemctl reboot",
+        "text" : "Reboot",
+        "keybind" : "r"
+    }
+    {
+        "label" : "shutdown",
+        "action" : "systemctl poweroff",
+        "text" : "Shutdown",
+        "keybind" : "s"
+    }
+  '';
+  environment.etc."wlogout/style.css".source = "${pkgs.wlogout}/etc/wlogout/style.css";
 
   # Make sure the system configuration wins over a stale
   # ~/.config/hypr/hyprland.lua, which Hyprland would otherwise prefer.
