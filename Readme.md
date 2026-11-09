@@ -1,7 +1,7 @@
 # NixOS Configuration
 
 Personal NixOS flake configuration, currently for the host `johannes-pc`
-(Sway/GNOME, gaming, development, etc.).
+(Sway/Hyprland/GNOME, gaming, development, etc.).
 
 ## Apply
 
