@@ -104,6 +104,10 @@
 
     gaps inner 4
 
+    # Move the cursor to the middle of a window when focus changes,
+    # matching Hyprland's default cursor behaviour.
+    mouse_warping container
+
     font pango:Source Code Pro Regular 11
 
     workspace_layout default
