@@ -5,6 +5,9 @@
   ...
 }:
 
+let
+  swayhelper = pkgs.callPackage ./pkgs/swayhelper/package.nix { };
+in
 {
   programs.sway = {
     enable = true;
@@ -19,6 +22,7 @@
       alacritty
       conky
       polkit_gnome
+      swayhelper
     ];
   };
 
@@ -174,8 +178,9 @@
     # focus the child container
     bindsym $mod+Shift+m focus child
 
-    # switch to workspace
-    bindsym $mod+period workspace next
+    # switch to workspace; at the end a new workspace is created instead of
+    # wrapping around to the first one
+    bindsym $mod+period exec swayhelper next
     bindsym $mod+comma workspace prev
     bindsym $mod+1 workspace 1
     bindsym $mod+2 workspace 2
@@ -188,8 +193,9 @@
     bindsym $mod+9 workspace 9
     bindsym $mod+0 workspace 10
 
-    # move focused container to workspace
-    bindsym $mod+Shift+period move container to workspace next
+    # move focused container to workspace; at the end a new workspace is
+    # created instead of wrapping around to the first one
+    bindsym $mod+Shift+period exec swayhelper move-next
     bindsym $mod+Shift+comma move container to workspace prev
     bindsym $mod+Shift+1 move container to workspace 1
     bindsym $mod+Shift+2 move container to workspace 2
