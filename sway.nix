@@ -108,6 +108,11 @@
     # matching Hyprland's default cursor behaviour.
     mouse_warping container
 
+    # Hide the cursor again as soon as a key is pressed, so it does not
+    # linger in the middle of the newly focused window. Moving the mouse
+    # makes it reappear.
+    seat * hide_cursor when-typing enable
+
     font pango:Source Code Pro Regular 11
 
     workspace_layout default
