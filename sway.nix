@@ -178,8 +178,8 @@ in
     # focus the child container
     bindsym $mod+Shift+m focus child
 
-    # switch to workspace; at the end a new workspace is created instead of
-    # wrapping around to the first one
+    # switch to workspace; at the end a new workspace is created unless the
+    # current one is an empty temporary workspace, then wrap around
     bindsym $mod+period exec swayhelper next
     bindsym $mod+comma workspace prev
     bindsym $mod+1 workspace 1

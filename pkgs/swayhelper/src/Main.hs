@@ -5,8 +5,9 @@ module Main (main) where
 import Control.Applicative ((<|>))
 import Control.Exception (bracket)
 import Control.Monad (unless, when)
-import Data.Aeson (FromJSON (parseJSON), eitherDecode, withObject, (.:), (.:?))
+import Data.Aeson (FromJSON (parseJSON), eitherDecode, withObject, (.:), (.:?), (.!=))
 import Data.Bits ((.&.))
+import Data.Maybe (mapMaybe)
 import Data.Word (Word32)
 import qualified Data.ByteString as BS
 import qualified Data.ByteString.Builder as BB
@@ -28,9 +29,10 @@ import System.Exit (exitFailure)
 import System.IO (hPutStrLn, stderr)
 
 -- Message types from sway-ipc(7).
-runCommandMessage, getWorkspacesMessage :: Word32
+runCommandMessage, getWorkspacesMessage, getTreeMessage :: Word32
 runCommandMessage = 0
 getWorkspacesMessage = 1
+getTreeMessage = 4
 
 -- Events have the highest bit set in the reply type.
 eventFlag :: Word32
@@ -39,13 +41,31 @@ eventFlag = 0x80000000
 data Action = FocusNext | MoveNext
 
 data Workspace = Workspace
-  { workspaceNum :: Int
+  { workspaceName :: String
+  , workspaceNum :: Int
   , workspaceFocused :: Bool
   }
 
 instance FromJSON Workspace where
   parseJSON = withObject "Workspace" $ \o ->
-    Workspace <$> o .: "num" <*> o .: "focused"
+    Workspace <$> o .: "name" <*> o .: "num" <*> o .: "focused"
+
+-- | The part of the layout tree that is needed to tell empty workspaces from
+-- populated ones.
+data Node = Node
+  { nodeType :: String
+  , nodeName :: String
+  , nodeNodes :: [Node]
+  , nodeFloatingNodes :: [Node]
+  }
+
+instance FromJSON Node where
+  parseJSON = withObject "Node" $ \o ->
+    Node
+      <$> o .: "type"
+      <*> o .: "name"
+      <*> o .:? "nodes" .!= []
+      <*> o .:? "floating_nodes" .!= []
 
 data CommandReply = CommandReply
   { commandSucceeded :: Bool
@@ -85,27 +105,66 @@ getWorkspaces sock = do
     Left err -> die ("cannot parse GET_WORKSPACES reply: " ++ err)
     Right workspaces -> pure workspaces
 
+getTree :: Socket -> IO Node
+getTree sock = do
+  payload <- request sock getTreeMessage BS.empty
+  case eitherDecode (BL.fromStrict payload) of
+    Left err -> die ("cannot parse GET_TREE reply: " ++ err)
+    Right tree -> pure tree
+
 runAction :: Socket -> Action -> [Workspace] -> IO ()
-runAction sock action workspaces =
+runAction sock action workspaces = do
+  target <- nextTarget sock action workspaces
   runCommand sock $
-    case (action, nextTarget workspaces) of
-      (FocusNext, Just target) -> "workspace number " ++ show target
-      (MoveNext, Just target) -> "move container to workspace number " ++ show target
+    case (action, target) of
+      (FocusNext, Just number) -> "workspace number " ++ show number
+      (MoveNext, Just number) -> "move container to workspace number " ++ show number
       (FocusNext, Nothing) -> "workspace next"
       (MoveNext, Nothing) -> "move container to workspace next"
 
 -- | Return the number of the workspace to create if sway would otherwise wrap
 -- around to the first workspace.  Numbered workspaces are visited before named
 -- ones, so a new one is only created when neither exists.
-nextTarget :: [Workspace] -> Maybe Int
-nextTarget workspaces =
+--
+-- An empty workspace at the end is a temporary one: it is the leftover of a
+-- previous switch.  Leaving it should wrap around again instead of piling up
+-- one empty workspace after another.
+nextTarget :: Socket -> Action -> [Workspace] -> IO (Maybe Int)
+nextTarget sock action workspaces =
   case [workspaceNum w | w <- workspaces, workspaceFocused w] of
     (current : _)
       | current >= 0
       , all (\w -> workspaceNum w <= current) workspaces
       , all (\w -> workspaceNum w >= 0) workspaces ->
-          Just (current + 1)
-    _ -> Nothing
+          case action of
+            MoveNext -> pure (Just (current + 1))
+            FocusNext -> do
+              empty <- focusedWorkspaceEmpty sock workspaces
+              pure (if empty then Nothing else Just (current + 1))
+    _ -> pure Nothing
+
+focusedWorkspaceEmpty :: Socket -> [Workspace] -> IO Bool
+focusedWorkspaceEmpty sock workspaces =
+  case [workspaceName w | w <- workspaces, workspaceFocused w] of
+    (name : _) -> do
+      tree <- getTree sock
+      pure (maybe False isEmptyWorkspace (findWorkspace name tree))
+    [] -> pure False
+
+-- | A workspace without tiling or floating children, i.e. one that sway is
+-- going to destroy as soon as it loses focus.
+isEmptyWorkspace :: Node -> Bool
+isEmptyWorkspace node = null (nodeNodes node) && null (nodeFloatingNodes node)
+
+findWorkspace :: String -> Node -> Maybe Node
+findWorkspace name node
+  | nodeType node == "workspace" && nodeName node == name = Just node
+  | otherwise =
+      case mapMaybe
+        (findWorkspace name)
+        (nodeNodes node ++ nodeFloatingNodes node) of
+        (found : _) -> Just found
+        [] -> Nothing
 
 runCommand :: Socket -> String -> IO ()
 runCommand sock command = do
