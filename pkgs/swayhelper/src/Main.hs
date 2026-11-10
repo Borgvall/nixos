@@ -54,7 +54,7 @@ instance FromJSON Workspace where
 -- populated ones.
 data Node = Node
   { nodeType :: String
-  , nodeName :: String
+  , nodeName :: Maybe String
   , nodeNodes :: [Node]
   , nodeFloatingNodes :: [Node]
   }
@@ -63,7 +63,7 @@ instance FromJSON Node where
   parseJSON = withObject "Node" $ \o ->
     Node
       <$> o .: "type"
-      <*> o .: "name"
+      <*> o .:? "name"
       <*> o .:? "nodes" .!= []
       <*> o .:? "floating_nodes" .!= []
 
@@ -158,7 +158,7 @@ isEmptyWorkspace node = null (nodeNodes node) && null (nodeFloatingNodes node)
 
 findWorkspace :: String -> Node -> Maybe Node
 findWorkspace name node
-  | nodeType node == "workspace" && nodeName node == name = Just node
+  | nodeType node == "workspace" && nodeName node == Just name = Just node
   | otherwise =
       case mapMaybe
         (findWorkspace name)
