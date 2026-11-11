@@ -35,6 +35,7 @@ in
       ghc
       nixfmt
       nixd
+      basedpyright
       gh
 
       #opencode

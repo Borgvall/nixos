@@ -10,6 +10,14 @@ let
   # (e.g. the Haskell server) work without changing this module.
   lspServers = [
     {
+      name = "basedpyright";
+      command = [
+        "basedpyright-langserver"
+        "--stdio"
+      ];
+      filetypes = [ "python" ];
+    }
+    {
       name = "clangd";
       command = [ "clangd" ];
       filetypes = [
