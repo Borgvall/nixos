@@ -33,6 +33,7 @@ in
     with pkgs;
     [
       ghc
+      python3
       nixfmt
       nixd
       basedpyright
