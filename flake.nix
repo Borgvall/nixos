@@ -21,6 +21,12 @@
             ./configuration.nix
           ];
         };
+        jroehl-nixos = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./hosts/jroehl-nixos/configuration.nix
+            ./configuration.nix
+          ];
+        };
         nixos-vm = nixpkgs.lib.nixosSystem {
           modules = [
             ./hosts/nixos-vm/configuration.nix
