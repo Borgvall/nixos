@@ -15,4 +15,9 @@
     internet = false;
     development = true;
   };
+
+  hostSpecifics.interfaceNames = {
+    wlan = "wlp2s0";
+    eth = "enp3s0";
+  };
 }
