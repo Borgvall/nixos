@@ -45,7 +45,7 @@
 
   services.xserver.enable = true;
 
-  services.displayManager.gdm = {
+  services.displayManager.ly = {
     enable = true;
   };
   services.desktopManager.gnome.enable = true;
