@@ -104,8 +104,6 @@ in
       mode 1600x1200
     }
 
-    gaps inner 4
-
     # Move the cursor to the middle of a window when focus changes,
     # matching Hyprland's default cursor behaviour.
     mouse_warping container
