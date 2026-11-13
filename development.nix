@@ -7,6 +7,10 @@
 
 let
   agent-lsp = pkgs.callPackage pkgs/agent-lsp.nix { };
+
+  # Build an older version 2.2.1 of OpenCode until nixpkgs fixes it
+  opencode221 = pkgs.callPackage pkgs/opencode221/package.nix { };
+
   installExtraPackages = config.hostSpecifics.extraPrograms.development;
 in
 {
@@ -39,7 +43,7 @@ in
       basedpyright
       gh
 
-      #opencode
+      opencode221
       agent-lsp
     ]
   );
