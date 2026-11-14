@@ -20,7 +20,7 @@ in
   };
 
   programs.evolution = {
-    enable = !config.programs.thunderbird.enable;
+    enable = lib.mkDefault (!config.programs.thunderbird.enable);
   };
 
   # Hint Electron Apps/Chromium to use Wayland
