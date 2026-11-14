@@ -7,7 +7,6 @@
       ./haskell-backup.nix
 
       ../../ai.nix
-      ../../gaming.nix
       ../../virtualization.nix
   ];
 
@@ -20,5 +19,9 @@
   hostSpecifics.interfaceNames = {
     wlan = "wlo1";
     eth = "enp34s0";
+  };
+
+  hostSpecifics.extraFeatures = {
+    gaming = true;
   };
 }

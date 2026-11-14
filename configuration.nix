@@ -6,6 +6,7 @@
     ./development.nix
     ./dictionaries.nix
     ./dvd-mount.nix
+    ./gaming.nix
     ./host-specific-options.nix
     ./hpofficejet.nix
     ./internet.nix

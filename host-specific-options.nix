@@ -32,6 +32,11 @@
       };
     };
     extraFeatures = {
+      gaming = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "If the host is used for gaming";
+      };
       officejet = lib.mkOption {
         type = lib.types.bool;
         default = true;

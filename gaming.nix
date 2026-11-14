@@ -1,14 +1,17 @@
 {
   pkgs,
+  config,
+  lib,
   ...
 }:
+
 let
   protons = with pkgs; [
     proton-ge-bin
     dwproton-bin
   ];
 in
-{
+lib.mkIf config.hostSpecifics.extraFeatures.gaming {
   boot.kernelModules = [ "ntsync" ];
 
   programs.steam = {
