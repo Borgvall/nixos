@@ -31,5 +31,12 @@
         description = "Install additional development tools.";
       };
     };
+    extraFeatures = {
+      officejet = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Support OfficeJet 6950 all in one device";
+      };
+    };
   };
 }

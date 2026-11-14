@@ -1,6 +1,11 @@
-{pkgs, ...}:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+
+lib.mkIf config.hostSpecifics.extraFeatures.officejet {
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
