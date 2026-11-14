@@ -52,8 +52,7 @@ in
     in
     ''
       conky.config = {
-        out_to_console = true,
-        out_to_x = false,
+        output_backend = 'console'
       }
 
       conky.text = [[
