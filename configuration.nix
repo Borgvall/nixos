@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./ai.nix
     ./compressingswap.nix
     ./development.nix
     ./dictionaries.nix
@@ -11,6 +10,7 @@
     ./host-specific-options.nix
     ./hpofficejet.nix
     ./internet.nix
+    ./localai.nix
     ./sway.nix
     ./upgradesandgc.nix
     ./users.nix

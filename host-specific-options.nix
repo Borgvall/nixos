@@ -32,7 +32,7 @@
       };
     };
     extraFeatures = {
-      ai = lib.mkOption {
+      localai = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "If the host runs local AI services";

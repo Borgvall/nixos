@@ -19,7 +19,7 @@
   };
 
   hostSpecifics.extraFeatures = {
-    ai = true;
+    localai = true;
     gaming = true;
     virtualization = true;
   };
