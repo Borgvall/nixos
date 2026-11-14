@@ -47,6 +47,7 @@
 
   services.displayManager.ly = {
     enable = true;
+    x11Support = false;
   };
   services.desktopManager.gnome.enable = true;
 
