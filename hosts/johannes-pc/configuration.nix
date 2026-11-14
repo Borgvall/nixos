@@ -6,7 +6,6 @@
       ./btrfs-filesystems.nix
       ./haskell-backup.nix
 
-      ../../ai.nix
       ../../virtualization.nix
   ];
 
@@ -22,6 +21,7 @@
   };
 
   hostSpecifics.extraFeatures = {
+    ai = true;
     gaming = true;
   };
 }

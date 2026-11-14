@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./ai.nix
     ./compressingswap.nix
     ./development.nix
     ./dictionaries.nix

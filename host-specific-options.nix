@@ -32,6 +32,11 @@
       };
     };
     extraFeatures = {
+      ai = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "If the host runs local AI services";
+      };
       gaming = lib.mkOption {
         type = lib.types.bool;
         default = false;

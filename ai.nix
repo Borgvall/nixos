@@ -1,6 +1,11 @@
-{ pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+
+lib.mkIf config.hostSpecifics.extraFeatures.ai {
   services.ollama = {
     enable = true;
     package = pkgs.ollama-vulkan;
