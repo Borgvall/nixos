@@ -16,7 +16,6 @@ in
       swayidle
       swaylock
       swaynotificationcenter
-      fd
       wofi
       wofi-emoji
       alacritty
@@ -135,9 +134,6 @@ in
 
     #start wofi-emoji to enter Unicode-emojis
     bindsym $mod+colon exec wofi-emoji
-
-    # search and open files in home directory
-    bindsym $mod+Shift+f exec fd -d 5 . ~ | wofi -i --dmenu | xargs -r -d \\\\n xdg-open
 
     # change focus
     bindsym $mod+n focus left
