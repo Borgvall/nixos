@@ -5,8 +5,6 @@
       ./hardware-configuration.nix
       ./btrfs-filesystems.nix
       ./haskell-backup.nix
-
-      ../../virtualization.nix
   ];
 
   networking.hostName = "johannes-pc";
@@ -23,5 +21,6 @@
   hostSpecifics.extraFeatures = {
     ai = true;
     gaming = true;
+    virtualization = true;
   };
 }

@@ -15,6 +15,7 @@
     ./upgradesandgc.nix
     ./users.nix
     ./vim.nix
+    ./virtualization.nix
   ];
 
   services.fstrim.enable = true;

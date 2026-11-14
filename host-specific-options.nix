@@ -47,6 +47,11 @@
         default = true;
         description = "Support OfficeJet 6950 all in one device";
       };
+      virtualization = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "If the host runs virtual machines";
+      };
     };
   };
 }
