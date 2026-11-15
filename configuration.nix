@@ -11,6 +11,7 @@
     ./hpofficejet.nix
     ./internet.nix
     ./localai.nix
+    ./multimedia.nix
     ./sway.nix
     ./upgradesandgc.nix
     ./users.nix
@@ -85,12 +86,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    rhythmbox
-    celluloid
-    geeqie
-    mpv
-    yt-dlp
-
     libreoffice
 
     file

@@ -42,6 +42,11 @@
         default = false;
         description = "If the host is used for gaming";
       };
+      multimedia = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "If the host is used for multimedia";
+      };
       officejet = lib.mkOption {
         type = lib.types.bool;
         default = true;
