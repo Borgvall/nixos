@@ -5,6 +5,9 @@
       fsType = "btrfs";
       options = [ "compress=zstd" "noatime" "ssd_spread" "noauto" ];
     };
+  systemd.tmpfiles.rules = [
+    "d /live-usb-root 0755 root root -"
+  ];
 
   fileSystems."/live-usb-root/boot" =
     { device = "/dev/disk/by-uuid/12CE-A600";
