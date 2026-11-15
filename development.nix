@@ -42,7 +42,7 @@ in
       nixd
       basedpyright
       gh
-
+    ] ++ lib.optionals config.hostSpecifics.extraPrograms.agenticDevelopment [
       opencode221
       agent-lsp
     ]

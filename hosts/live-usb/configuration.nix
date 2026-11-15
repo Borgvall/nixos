@@ -20,6 +20,7 @@
   hostSpecifics.extraPrograms = {
     internet = false;
     development = true;
+    agenticDevelopment = false;
   };
 
   hostSpecifics.extraFeatures = {

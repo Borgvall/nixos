@@ -1,4 +1,8 @@
-{ lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 {
   options.hostSpecifics = {
@@ -29,6 +33,11 @@
         type = lib.types.bool;
         default = true;
         description = "Install additional development tools.";
+      };
+      agenticDevelopment = lib.mkOption {
+        type = lib.types.bool;
+        default = config.hostSpecifics.extraPrograms.development;
+        description = "Install additional development tools for agentic programming.";
       };
     };
     extraFeatures = {
