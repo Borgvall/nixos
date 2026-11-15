@@ -5,7 +5,7 @@
       ./hardware-configuration.nix
       ./btrfs-filesystems.nix
       ./haskell-backup.nix
-      ./live-usb-mounts
+      ./live-usb-mounts.nix
   ];
 
   networking.hostName = "johannes-pc";
