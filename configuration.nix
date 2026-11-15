@@ -44,8 +44,6 @@
     auto-optimise-store = true;
   };
 
-  services.xserver.enable = true;
-
   services.displayManager.ly = {
     enable = true;
     x11Support = false;
