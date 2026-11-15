@@ -14,6 +14,11 @@ in
 lib.mkIf config.hostSpecifics.extraFeatures.gaming {
   boot.kernelModules = [ "ntsync" ];
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
