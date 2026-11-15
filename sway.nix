@@ -42,7 +42,7 @@ in
         if (null == iface) then null else "${desc} \${downspeed ${iface}} down \${upspeed ${iface}} up";
       conkies = lib.remove null [
         "RAM \${mem}"
-        "CPU \${cpubar}"
+        "CPU \${cpu cpu0}%"
         (ifaceSpeed "WLAN" wlan)
         (ifaceSpeed "NET" eth)
         "\${time %a %d %b %R}"
