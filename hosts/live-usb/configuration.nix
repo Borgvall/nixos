@@ -22,6 +22,13 @@
     development = true;
   };
 
+  hostSpecifics.extraFeatures = {
+    multimedia = false;
+    officejet = false;
+  };
+
+  programs.evolution.enable = false;
+
   environment.systemPackages = with pkgs; [
     gparted
   ];
