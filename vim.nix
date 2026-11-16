@@ -41,6 +41,14 @@ let
       filetypes = [ "nix" ];
     }
     {
+      name = "phpactor";
+      command = [
+        "phpactor"
+        "language-server"
+      ];
+      filetypes = [ "php" ];
+    }
+    {
       name = "texlab";
       command = [ "texlab" ];
       filetypes = [

@@ -31,5 +31,8 @@
 
   environment.systemPackages = with pkgs; [
     microsoft-edge
+
+    # PHP language server, registered in vim.nix
+    phpactor
   ];
 }
