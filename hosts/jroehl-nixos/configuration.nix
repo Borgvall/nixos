@@ -11,9 +11,16 @@
 
   hostSpecifics.preferVulkan = false;
 
+  programs.evolution.enable = false;
+
   hostSpecifics.extraPrograms = {
     internet = false;
     development = true;
+  };
+
+  hostSpecifics.extraFeatures = {
+    multimedia = false;
+    officejet = false;
   };
 
   hostSpecifics.interfaceNames = {
