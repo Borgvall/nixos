@@ -34,5 +34,6 @@
 
     # PHP language server, registered in vim.nix
     phpactor
+    symfony-cli
   ];
 }
