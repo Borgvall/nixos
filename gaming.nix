@@ -62,6 +62,10 @@ lib.mkIf config.hostSpecifics.extraFeatures.gaming {
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
 
+  environment.sessionVariables = {
+    MANGOHUD = 1;
+  };
+
   environment.systemPackages = with pkgs; [
     heroic
     mangohud
