@@ -10,6 +10,16 @@ in
   services.mysql = {
     enable = true;
     package = mariadb;
+    ensureDatabases = [ "kantine" "johannes" ];
+    ensureUsers = [
+      {
+        name = "johannes";
+        ensurePermissions = {
+          "kantine.*" = "ALL PRIVILEGES";
+          "johannes.*" = "ALL PRIVILEGES";
+        };
+      }
+    ];
   };
 
   environment.systemPackages = with pkgs; [
