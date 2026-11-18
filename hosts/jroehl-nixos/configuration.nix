@@ -4,6 +4,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./symfony.nix
   ];
 
   networking.hostName = "jroehl-nixos";
@@ -31,9 +32,5 @@
 
   environment.systemPackages = with pkgs; [
     microsoft-edge
-
-    # PHP language server, registered in vim.nix
-    phpactor
-    symfony-cli
   ];
 }
