@@ -86,5 +86,6 @@
     file
     net-tools
     psmisc
+    busybox
   ];
 }
