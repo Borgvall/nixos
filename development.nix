@@ -8,6 +8,11 @@
 let
   agent-lsp = pkgs.callPackage pkgs/agent-lsp.nix { };
 
+  globalGitignore = pkgs.writeText "global-gitignore" ''
+    .*.swp
+    result
+  '';
+
   installExtraPackages = config.hostSpecifics.extraPrograms.development;
 in
 {
@@ -20,6 +25,7 @@ in
     package = if installExtraPackages then pkgs.gitFull else pkgs.git;
     lfs.enable = true;
     config = {
+      core.excludesFile = "${globalGitignore}";
       init = {
         defaultBranch = "main";
       };
