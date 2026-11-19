@@ -3,13 +3,10 @@
   ...
 }:
 
-let
-  mariadb = pkgs.mariadb;
-in
 {
   services.mysql = {
     enable = true;
-    package = mariadb;
+    package = pkgs.mariadb;
     ensureDatabases = [ "kantine" "johannes" ];
     ensureUsers = [
       {
