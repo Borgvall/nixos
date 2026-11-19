@@ -19,7 +19,18 @@ in
           "johannes.*" = "ALL PRIVILEGES";
         };
       }
+      {
+        name = "kantine";
+        ensurePermissions = {
+          "kantine.*" = "ALL PRIVILEGES";
+        };
+      }
     ];
+    settings = {
+      mysqld = {
+        bind-address = "127.0.0.1";
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [
