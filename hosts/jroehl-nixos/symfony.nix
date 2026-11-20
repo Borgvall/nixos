@@ -31,6 +31,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    dbeaver-bin
     mycli # MariaDB autocompletions
     php
     phpactor # PHP language server
