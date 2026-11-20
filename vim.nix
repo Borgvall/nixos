@@ -82,6 +82,7 @@ in
             (pkgs.callPackage ./pkgs/vim-spelllang-de/package.nix { })
             vim-fugitive
             vimtex
+            vim-twig
             vim-lsp
             asyncomplete-vim
             asyncomplete-lsp-vim
