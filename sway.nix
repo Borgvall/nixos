@@ -7,6 +7,11 @@
 
 let
   swayhelper = pkgs.callPackage ./pkgs/swayhelper/package.nix { };
+
+  mailcommand =
+    if config.programs.evolution.enable then "evolution"
+    else if config.programs.thunderbird.enable then "thunderbird"
+    else "firefox -P ms365"; # Firefox profile for Outlook&Co
 in
 lib.mkIf config.hostSpecifics.extraFeatures.sway {
   programs.sway = {
@@ -245,7 +250,7 @@ lib.mkIf config.hostSpecifics.extraFeatures.sway {
     mode "Start Programme" {
       bindsym f exec firefox
       bindsym d exec nautilus
-      bindsym m exec evolution
+      bindsym m exec ${mailcommand}
       bindsym v exec gvim
       bindsym p exec seahorse
       bindsym s exec steam
