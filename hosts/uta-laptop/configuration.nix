@@ -22,6 +22,7 @@
   hostSpecifics.extraFeatures = {
     multimedia = false;
     officejet = true;
+    sway = false;
   };
 
   services.xserver.xkb.variant = "nodeadkeys,neo";

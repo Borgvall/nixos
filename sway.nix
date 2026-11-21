@@ -8,7 +8,7 @@
 let
   swayhelper = pkgs.callPackage ./pkgs/swayhelper/package.nix { };
 in
-{
+lib.mkIf config.hostSpecifics.extraFeatures.sway {
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;

@@ -61,6 +61,11 @@
         default = true;
         description = "Support OfficeJet 6950 all in one device";
       };
+      sway = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Whether sway should be installed";
+      };
       virtualization = lib.mkOption {
         type = lib.types.bool;
         default = false;
