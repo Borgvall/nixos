@@ -19,6 +19,11 @@
     development = false;
   };
 
+  hostSpecifics.extraFeatures = {
+    multimedia = false;
+    officejet = true;
+  };
+
   services.xserver.xkb.variant = "nodeadkeys,neo";
 
   users.users.uta = {
