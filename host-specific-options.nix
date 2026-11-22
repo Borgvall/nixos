@@ -11,6 +11,11 @@
       default = true;
       description = "If vulkan is preferred over other APIS as OpenGL, Cuda, RocM.";
     };
+    smallMonitor = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "If the host has a small screen and should spend as little space as possible on borders and the bar.";
+    };
     interfaceNames = {
       wlan = lib.mkOption {
         type = lib.types.nullOr lib.types.str;

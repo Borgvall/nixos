@@ -13,6 +13,8 @@
 
   hostSpecifics.preferVulkan = false;
 
+  hostSpecifics.smallMonitor = true;
+
   programs.evolution.enable = false;
 
   hostSpecifics.extraPrograms = {

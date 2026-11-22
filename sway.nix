@@ -122,6 +122,11 @@ lib.mkIf config.hostSpecifics.extraFeatures.sway {
 
     workspace_layout default
 
+    # Small screens: no window borders, every pixel goes to the content
+    ${lib.optionalString config.hostSpecifics.smallMonitor ''
+      default_border pixel 0
+    ''}
+
     # Use Mouse+$mod to drag floating windows to their wanted position
     floating_modifier $mod
 
@@ -291,7 +296,7 @@ lib.mkIf config.hostSpecifics.extraFeatures.sway {
     # finds out, if available)
     bar {
       status_command conky --config=/etc/conky/conky-sway.conf
-      #mode hide
+      ${lib.optionalString config.hostSpecifics.smallMonitor "mode hide"}
       modifier $mod
       position top
     }
