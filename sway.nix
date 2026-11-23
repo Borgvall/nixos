@@ -122,9 +122,9 @@ lib.mkIf config.hostSpecifics.extraFeatures.sway {
 
     workspace_layout default
 
-    # Small screens: no window borders, every pixel goes to the content
+    # Small screens: keep title bars, but draw no window border
     ${lib.optionalString config.hostSpecifics.smallMonitor ''
-      default_border pixel 0
+      default_border normal 0
     ''}
 
     # Use Mouse+$mod to drag floating windows to their wanted position
