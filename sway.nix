@@ -46,8 +46,9 @@ lib.mkIf config.hostSpecifics.extraFeatures.sway {
         desc: iface:
         if (null == iface) then null else "${desc} \${downspeed ${iface}} down \${upspeed ${iface}} up";
       conkies = lib.remove null [
-        "RAM \${mem}"
         "CPU \${cpu cpu0}%"
+        "RAM \${mem}"
+        "SWAP \${swap}"
         (ifaceSpeed "WLAN" wlan)
         (ifaceSpeed "NET" eth)
         "\${time %a %d %b %R}"
