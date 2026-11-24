@@ -23,7 +23,6 @@
   };
 
   hostSpecifics.extraFeatures = {
-    gaming = true;
     multimedia = false;
     officejet = false;
   };
@@ -32,8 +31,4 @@
     wlan = "wlp2s0";
     eth = "enp3s0";
   };
-
-  environment.systemPackages = with pkgs; [
-    microsoft-edge
-  ];
 }
