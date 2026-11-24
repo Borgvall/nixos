@@ -23,6 +23,7 @@
   };
 
   hostSpecifics.extraFeatures = {
+    gaming = true;
     multimedia = false;
     officejet = false;
   };
