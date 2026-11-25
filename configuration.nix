@@ -82,6 +82,7 @@
 
   environment.systemPackages = with pkgs; [
     libreoffice
+    xepub
 
     file
     net-tools
