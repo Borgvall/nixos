@@ -1,6 +1,13 @@
-{...}:
+{
+  pkgs,
+  ...
+}:
 
 {
+  programs.fish = {
+    enable = true;
+  };
+
   users.users.johannes = {
     description = "Johannes Röhl";
     initialPassword = "12345"; # change it promptly ;-)
@@ -10,6 +17,7 @@
       "wheel"
     ];
     uid = 1000;
+    shell = pkgs.fish;
   };
 
   users.users.test = {
