@@ -77,5 +77,5 @@ lib.mkIf config.hostSpecifics.extraFeatures.gaming {
   ];
 
   # Keep the Unreal Tournament ISOs in the Nix-store to avoid redownloading them.
-  system.extraDependencies = [pkgs.ut2004Packages.image] ++ pkgs.ut1999.isos;
+  system.extraDependencies = [pkgs.ut2004Packages.image.src] ++ pkgs.ut1999.isos;
 }
