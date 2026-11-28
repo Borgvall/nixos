@@ -110,11 +110,6 @@ in
           " Vertikales Aufteilen für den „diff-Modus“
           set diffopt=filler,vertical
 
-          " Show the enclosing code block above the buffer, like VS Code's
-          " breadcrumbs. The context is derived from indentation, so only
-          " enable it where that makes sense.
-          let g:context_filetype_blacklist = ['help', 'gitcommit', 'qf']
-
           ${lspSetup}
           " Nützliche Tastenkombinationen für die Entwicklung
           function! s:on_lsp_buffer_enabled() abort
